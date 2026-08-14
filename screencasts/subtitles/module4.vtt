@@ -1,0 +1,377 @@
+WEBVTT
+
+00:00:00.001 --> 00:00:01.920
+Okay, so this brings us to module four.
+
+00:00:02.600 --> 00:00:07.140
+And this is the cross ecosystem contrast comparison
+
+00:00:07.820 --> 00:00:11.380
+where we are looking at our different data,
+
+00:00:11.620 --> 00:00:13.660
+lung data sets related from HubMap,
+
+00:00:13.800 --> 00:00:16.160
+the single nucleates that we then process
+
+00:00:16.360 --> 00:00:18.020
+into the pseudobulk for this comparison,
+
+00:00:18.200 --> 00:00:21.000
+as well as the GTECS bulk values
+
+00:00:21.380 --> 00:00:23.440
+that we specifically have been,
+
+00:00:23.560 --> 00:00:26.320
+so that you have your appropriate age comparison,
+
+00:00:26.920 --> 00:00:28.540
+and then the geofibrosis cohort,
+
+00:00:28.760 --> 00:00:31.740
+as well as the NASA space flight study for mouse.
+
+00:00:31.980 --> 00:00:34.220
+So, you know, and there's somebody asked like,
+
+00:00:34.300 --> 00:00:35.360
+why space flight?
+
+00:00:35.520 --> 00:00:38.120
+So the reason space flight is here
+
+00:00:38.240 --> 00:00:40.280
+is a comparison about aging and disease
+
+00:00:40.520 --> 00:00:41.700
+and it's not necessarily arbitrary.
+
+00:00:41.960 --> 00:00:43.740
+So microgravity and space radiation
+
+00:00:44.360 --> 00:00:47.260
+are studied explicitly as a model of accelerated aging,
+
+00:00:47.460 --> 00:00:50.360
+producing the inflammation, senescence
+
+00:00:50.460 --> 00:00:52.700
+and fibrotic remodeling signatures
+
+00:00:52.820 --> 00:00:54.220
+that characterize age tissue
+
+00:00:54.700 --> 00:00:58.120
+and even a genomic radiation age association
+
+00:00:58.120 --> 00:01:00.760
+has directly been carried into lung diseases.
+
+00:01:01.000 --> 00:01:04.239
+So this is why it's important for,
+
+00:01:04.780 --> 00:01:07.560
+just as an exploratory analysis for this cross ecosystem
+
+00:01:08.560 --> 00:01:10.340
+to compare the different age contrasts,
+
+00:01:10.440 --> 00:01:13.120
+specifically to the fibrosis cohort
+
+00:01:13.440 --> 00:01:15.400
+as well as the space flight.
+
+00:01:15.540 --> 00:01:17.820
+So how do you do that?
+
+00:01:17.920 --> 00:01:19.520
+So you have different platforms, different units,
+
+00:01:19.720 --> 00:01:21.640
+different species even, so different processing.
+
+00:01:22.280 --> 00:01:27.320
+And this model really talks about the best way to do that
+
+00:01:27.360 --> 00:01:29.100
+is to look at what actually does travel.
+
+00:01:29.280 --> 00:01:30.020
+And it's the contrast.
+
+00:01:30.240 --> 00:01:33.420
+So within each resource you've computed under one design,
+
+00:01:33.520 --> 00:01:34.440
+you have the log-to-fold change,
+
+00:01:34.600 --> 00:01:36.060
+and then the pathway enrichment score.
+
+00:01:36.220 --> 00:01:39.080
+So really the normalized enrichment score
+
+00:01:39.130 --> 00:01:41.280
+is going to be what we use to be able to find
+
+00:01:41.380 --> 00:01:43.280
+concordance between the different data sets
+
+00:01:43.460 --> 00:01:46.620
+and the relevant biological mechanisms.
+
+00:01:50.259 --> 00:01:52.960
+So, you know, following again a similar template
+
+00:01:54.360 --> 00:01:55.380
+as the previous modules,
+
+00:01:56.080 --> 00:01:57.500
+looking at our method section.
+
+00:01:58.520 --> 00:01:59.480
+We have six steps.
+
+00:01:59.760 --> 00:02:04.700
+So we have the four within resource contrast,
+
+00:02:05.040 --> 00:02:06.480
+one, differential expressed path,
+
+00:02:06.680 --> 00:02:08.160
+and explicit reference levels.
+
+00:02:09.759 --> 00:02:13.220
+And so all of this to be able to integrate
+
+00:02:13.360 --> 00:02:16.420
+at the pathway normalize enrichment score,
+
+00:02:16.880 --> 00:02:19.500
+and then looked at the share mechanism
+
+00:02:19.920 --> 00:02:24.580
+concordance across those different data sets.
+
+00:02:25.560 --> 00:02:29.960
+So following the same structure, again,
+
+00:02:30.320 --> 00:02:32.420
+we go through the calibration of the space flight.
+
+00:02:32.420 --> 00:02:33.360
+So this is important.
+
+00:02:33.420 --> 00:02:36.280
+So we looked at specific X-fold spike and calibration
+
+00:02:36.680 --> 00:02:40.100
+to ensure that there's legitimacy to the--
+
+00:02:40.100 --> 00:02:45.060
+there's not any sort of ERCC confounding data problems
+
+00:02:45.100 --> 00:02:45.720
+or whatsoever.
+
+00:02:45.980 --> 00:02:49.120
+So that was ran and was successful.
+
+00:02:49.560 --> 00:02:53.740
+So then we-- important here, critical to address
+
+00:02:53.760 --> 00:02:54.920
+is the ortholog mapping.
+
+00:02:55.120 --> 00:02:58.940
+So we are able to then map the mouse to human tissue
+
+00:02:59.080 --> 00:03:03.460
+because again, the NAS-OSDR data is wrote in research data
+
+00:03:03.710 --> 00:03:05.900
+and needs to be mapped for proper comparison.
+
+00:03:06.600 --> 00:03:09.320
+And then it goes into the pathway enrichment values.
+
+00:03:09.700 --> 00:03:19.160
+So we then look at some of our results where, first,
+
+00:03:19.320 --> 00:03:20.959
+you're going to look at some of the differential
+
+00:03:20.960 --> 00:03:23.360
+express genes across the different conditions.
+
+00:03:26.540 --> 00:03:29.480
+And then it brings us into concordance.
+
+00:03:29.640 --> 00:03:34.060
+So we're looking at here aging versus disease
+
+00:03:34.400 --> 00:03:38.020
+and looking at what has showed positive correlation
+
+00:03:38.160 --> 00:03:41.040
+between the two modalities and some of the,
+
+00:03:41.580 --> 00:03:43.520
+or sorry, the two different experiments
+
+00:03:43.700 --> 00:03:46.640
+and then what are some of the most important
+
+00:03:47.180 --> 00:03:49.560
+biological takeaways from this
+
+00:03:49.560 --> 00:03:53.800
+And are any of these actually statistically significant,
+
+00:03:54.040 --> 00:03:55.640
+or is it more exploratory now?
+
+00:03:55.740 --> 00:03:58.540
+So you see, all of that is addressed throughout this
+
+00:03:59.540 --> 00:03:59.900
+module.
+
+00:04:00.640 --> 00:04:04.680
+So that brings us to the final section,
+
+00:04:05.120 --> 00:04:06.440
+where it's like, how do you read this?
+
+00:04:06.580 --> 00:04:09.060
+So then it talks about, again, the different comparisons
+
+00:04:09.220 --> 00:04:14.620
+between the disease aging and the flight pairs,
+
+00:04:15.480 --> 00:04:20.660
+as well as the different aging data set
+
+00:04:20.720 --> 00:04:21.620
+compared to flight.
+
+00:04:23.740 --> 00:04:25.840
+And some different ways that you could potentially
+
+00:04:25.940 --> 00:04:26.960
+extend the analysis.
+
+00:04:28.000 --> 00:04:31.980
+And I think that there's a lot of things here
+
+00:04:31.980 --> 00:04:33.160
+that could be further discussed.
+
+00:04:33.320 --> 00:04:35.500
+I think in increasing your core size,
+
+00:04:35.700 --> 00:04:37.920
+maybe potentially integrating additional data sets
+
+00:04:38.060 --> 00:04:41.040
+for the space data, could be relevant.
+
+00:04:41.140 --> 00:04:42.660
+There's a couple different studies out there
+
+00:04:42.780 --> 00:04:45.060
+that also deal with lung tissue.
+
+00:04:45.280 --> 00:04:48.580
+And then if there's any sort of human orthologs or human data,
+
+00:04:48.780 --> 00:04:50.000
+rather, that would be most applicable,
+
+00:04:50.580 --> 00:04:52.120
+maybe that would be important to consider.
+
+00:04:53.820 --> 00:04:57.820
+So this brings us to kind of the end of the cross ecosystem
+
+00:04:57.960 --> 00:05:01.320
+looking at the pathway concordance across the different data
+
+00:05:01.400 --> 00:05:01.720
+sets.
+
+00:05:02.220 --> 00:05:05.120
+And really, this will be the last screencast.
+
+00:05:05.300 --> 00:05:08.560
+So I just also want to bring the attention to module 5,
+
+00:05:09.960 --> 00:05:15.740
+which is the assessment module for this entire learning program.
+
+00:05:16.400 --> 00:05:19.200
+And everything that you watched produce results
+
+00:05:19.270 --> 00:05:20.320
+and raise it over states.
+
+00:05:20.440 --> 00:05:26.120
+Module five really is a 30 minutes of tuning
+
+00:05:26.420 --> 00:05:29.960
+of the computational results into what actually
+
+00:05:30.120 --> 00:05:31.280
+is going to be defendable.
+
+00:05:31.500 --> 00:05:32.840
+So you're looking at--
+
+00:05:33.360 --> 00:05:37.919
+you spend 10 minutes of the show on just a knowledge check
+
+00:05:37.920 --> 00:05:43.000
+looking at different considerations across the modules
+
+00:05:43.100 --> 00:05:43.840
+one through four.
+
+00:05:44.420 --> 00:05:51.140
+And then at the end, the second part is a 20 minute--
+
+00:05:51.600 --> 00:05:53.060
+it would take approximately 20 minutes.
+
+00:05:53.060 --> 00:05:53.760
+It might take more.
+
+00:05:53.820 --> 00:05:57.580
+But to write an abstract that would apply--
+
+00:05:57.760 --> 00:06:00.620
+where you apply this approach to a question of your own.
+
+00:06:00.760 --> 00:06:03.900
+So the goal here is to really take everything
+
+00:06:04.040 --> 00:06:07.900
+that you learned from this module or these different modules
+
+00:06:07.900 --> 00:06:14.520
+and the CFD resources and organize it into some sort of a hypothetical research campaign
+
+00:06:14.580 --> 00:06:20.400
+of your own and then, you know, it's on you to follow through with it as needed.
+
+00:06:20.620 --> 00:06:27.100
+So I hope you enjoyed the learning objectives and I hope you, yeah, were able to take some
+
+00:06:27.180 --> 00:06:33.000
+of the key interesting considerations away related to understanding how to interpret
+
+00:06:33.620 --> 00:06:35.900
+transcriptomic data related to lung tissue.
+

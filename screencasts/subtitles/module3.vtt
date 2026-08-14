@@ -1,0 +1,269 @@
+WEBVTT
+
+00:00:01.240 --> 00:00:07.000
+Okay, so that brings us to module three, which is actually the shortest analysis module at 30 minutes.
+
+00:00:07.260 --> 00:00:16.280
+However, you know, it's arguably one of the most useful being able to actually integrate and interpret a multi-omics integration method
+
+00:00:16.400 --> 00:00:26.780
+looking at snare-seq values that align for RNA and attack-seq values, specifically as they relate to our donor two that we source from HubMap.
+
+00:00:27.000 --> 00:00:30.300
+So this is important.
+
+00:00:30.320 --> 00:00:32.680
+And the reason we use donor two is because it's
+
+00:00:33.040 --> 00:00:35.720
+the two different data modalities,
+
+00:00:35.840 --> 00:00:37.240
+share block and a section.
+
+00:00:38.620 --> 00:00:42.200
+So this allows us to actually have a matched pair.
+
+00:00:42.440 --> 00:00:46.140
+And so then we can be able to better fit our MOFA model
+
+00:00:46.240 --> 00:00:47.640
+for this true multi-aim.
+
+00:00:49.360 --> 00:00:51.440
+Really, the question that we address here
+
+00:00:51.600 --> 00:00:53.760
+is whether RNA and chromatin accessibility
+
+00:00:54.120 --> 00:00:55.140
+share latent structure.
+
+00:00:55.440 --> 00:01:00.360
+And the reason this module matters is because if it does not,
+
+00:01:00.560 --> 00:01:02.580
+then what does that negative result actually mean?
+
+00:01:03.080 --> 00:01:06.580
+For this training course, we want to look at the fact
+
+00:01:06.760 --> 00:01:11.940
+that if we're potentially seeing that our model didn't
+
+00:01:12.380 --> 00:01:15.780
+demonstrate the alignment between the two modalities,
+
+00:01:15.940 --> 00:01:18.820
+then did it fail?
+
+00:01:19.080 --> 00:01:21.000
+Or was it the actual data structure?
+
+00:01:21.220 --> 00:01:22.860
+So that's an important distinction to make.
+
+00:01:23.360 --> 00:01:25.160
+and then we can further discuss that
+
+00:01:25.540 --> 00:01:28.900
+as we move through the results of this specific module.
+
+00:01:29.180 --> 00:01:34.100
+So the method section here introduces a section zero,
+
+00:01:34.300 --> 00:01:36.960
+which explains what MOFA actually does,
+
+00:01:37.240 --> 00:01:39.940
+and this is important before we just look at the output
+
+00:01:40.080 --> 00:01:42.560
+because the whole interpretation rests on one quantity
+
+00:01:42.680 --> 00:01:45.460
+and it's really the variance explained per factor per view.
+
+00:01:45.640 --> 00:01:48.900
+So a shared factor explains a substantial share of variance
+
+00:01:48.900 --> 00:01:49.660
+in both views.
+
+00:01:50.840 --> 00:01:52.619
+That is coordinated variation
+
+00:01:52.620 --> 00:01:55.140
+and the same biological axis visible in transcription
+
+00:01:55.480 --> 00:01:56.400
+and in accessibility.
+
+00:01:56.940 --> 00:02:00.580
+So a modality private factor explains variance in one view
+
+00:02:00.780 --> 00:02:02.360
+and close to none in the other,
+
+00:02:02.820 --> 00:02:04.960
+then there will be is a structure confined
+
+00:02:05.040 --> 00:02:05.920
+in a single assay.
+
+00:02:06.120 --> 00:02:11.280
+So here that's what we're deploying MOFA
+
+00:02:11.300 --> 00:02:12.280
+to be able to integrate.
+
+00:02:12.420 --> 00:02:13.600
+Again, we follow a similar structure
+
+00:02:13.840 --> 00:02:17.540
+with the different method breakdown of script, Y.
+
+00:02:18.700 --> 00:02:22.980
+But if we continue to the actual results section,
+
+00:02:24.020 --> 00:02:29.300
+you know, we're able to see that the total variance
+
+00:02:29.460 --> 00:02:34.400
+explained is 1.31% of RNA and 0.91%
+
+00:02:34.520 --> 00:02:36.300
+in the attack gene activity view.
+
+00:02:37.340 --> 00:02:40.320
+And every active factor is modality private.
+
+00:02:40.640 --> 00:02:44.839
+So, you know, what this means is
+
+00:02:44.840 --> 00:02:47.540
+And that MOFA didn't find necessarily shared access,
+
+00:02:48.820 --> 00:02:50.960
+but we have to further look into this
+
+00:02:51.040 --> 00:02:54.000
+to see did MOFA work at all?
+
+00:02:54.010 --> 00:02:58.440
+And the answer is yes, because the RNA dominant factor scores
+
+00:02:58.760 --> 00:03:00.640
+actually tracks the asthma cell type labels.
+
+00:03:00.820 --> 00:03:04.020
+So we can see that the model was able to pick up
+
+00:03:04.080 --> 00:03:05.280
+cell type heterogeneity.
+
+00:03:06.000 --> 00:03:07.660
+And so it actually did work out fine.
+
+00:03:07.670 --> 00:03:14.220
+But then secondly, if we go into the attack view,
+
+00:03:14.360 --> 00:03:19.100
+you can see that the attack line clustering
+
+00:03:19.160 --> 00:03:25.720
+against Atmos cell type gives us adjusted index of 0.0117.
+
+00:03:26.160 --> 00:03:29.900
+So that means that it would be near chance.
+
+00:03:30.240 --> 00:03:34.080
+So then additionally, we wanted to look a little bit further.
+
+00:03:34.090 --> 00:03:36.680
+And it's like a third does a different integrator do better.
+
+00:03:36.940 --> 00:03:41.879
+So we use the weighted nearest neighbor
+
+00:03:41.880 --> 00:03:46.200
+to be able to look at a joint embedding
+
+00:03:46.240 --> 00:03:47.760
+between the different modalities.
+
+00:03:48.080 --> 00:03:52.880
+And it agrees with the RNA clustering of at 0.247
+
+00:03:53.140 --> 00:03:54.720
+and with the attack at 0.02.
+
+00:03:56.020 --> 00:03:58.580
+So it is following the RNA and it agrees
+
+00:03:58.700 --> 00:04:02.020
+with the azimuth labels less than the RNA alone does.
+
+00:04:03.040 --> 00:04:05.320
+So with that being said, you know,
+
+00:04:05.400 --> 00:04:08.540
+now I will transition to the notebook
+
+00:04:08.700 --> 00:04:11.860
+where you'll see that everything is organized
+
+00:04:11.860 --> 00:04:21.640
+fashion to the previous modules where we do align with the corresponding PDF.
+
+00:04:22.700 --> 00:04:31.600
+But we do have section one is more of a question here, what the object is, and then section
+
+00:04:31.800 --> 00:04:40.540
+two, we look at the variance explained across modalities, section three, we look at factor
+
+00:04:40.540 --> 00:04:45.960
+association with the cell identity and then section four we look at the content of the
+
+00:04:46.020 --> 00:04:51.920
+attack view, section five is that weighted nearest neighbor comparison and then section
+
+00:04:52.040 --> 00:05:02.840
+six we conclude with the actual gene bridge. So this is you know kind of the overall concept
+
+00:05:03.180 --> 00:05:06.260
+of the multi-omics integration for this learning module.
+
+00:05:08.520 --> 00:05:15.680
+The honest summary is that it is a legitimate multi-on pair
+
+00:05:15.800 --> 00:05:19.860
+of the RNA and attack in the same nuclear with the matched
+
+00:05:19.920 --> 00:05:21.800
+block as we previously stated.
+
+00:05:22.420 --> 00:05:25.160
+And the attack gene activity representation
+
+00:05:25.920 --> 00:05:31.539
+is not necessarily fully integrated
+
+00:05:31.540 --> 00:05:33.160
+for this actual model.
+
+00:05:33.340 --> 00:05:37.620
+But module four does scale the same discipline up.
+
+00:05:37.720 --> 00:05:41.940
+So you know, you could, we'll take this and independently
+
+00:05:42.400 --> 00:05:45.000
+use it and test some of our samples
+
+00:05:45.000 --> 00:05:48.080
+that we pulled from HubMap to be able to test
+
+00:05:48.180 --> 00:05:51.080
+against external ecosystems.
+
