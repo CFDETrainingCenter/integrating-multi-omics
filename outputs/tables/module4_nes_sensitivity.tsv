@@ -1,0 +1,6 @@
+slice	n_shared_pathways	spearman_rho	spearman_p	sign_agreement	headline	spearman_p_note
+All three (Hallmark + Reactome + GO BP)	3740	-0.078066666703311	1.753745268447058e-06	0.4614973262032085	False	gene-set overlap violates independence; p is descriptive only
+Hallmark + Reactome	1185	-0.1970078173380673	7.822376955772574e-12	0.3957805907172996	True	gene-set overlap violates independence; p is descriptive only
+Reactome only	1135	-0.1987425585414667	1.4213545111397002e-11	0.3964757709251101	False	gene-set overlap violates independence; p is descriptive only
+Hallmark only	50	-0.2141176470588235	0.1354048664662825	0.38	False	gene-set overlap violates independence; p is descriptive only
+GO BP only	2555	-0.0274636266569066	0.1652020397478487	0.4919765166340509	False	gene-set overlap violates independence; p is descriptive only

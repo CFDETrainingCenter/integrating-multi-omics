@@ -1,0 +1,332 @@
+{
+  "timestamp_utc": "2026-08-14T14:06:21.498746+00:00",
+  "module4": {
+    "_scripts": [
+      "nb06_crossres"
+    ],
+    "_bloom": [
+      "Analyze",
+      "Evaluate"
+    ],
+    "_instructional_minutes": 30,
+    "data": {
+      "gtex_tpm": "data/source/GTEX/gene_tpm_v10_lung.gct.gz",
+      "gtex_reads": "data/source/GTEX/gene_reads_v10_lung.gct.gz",
+      "gtex_sample_attrs": "data/source/GTEX/GTEx_Analysis_v10_Annotations_SampleAttributesDS.txt",
+      "gtex_subject_pheno": "data/source/GTEX/GTEx_Analysis_v10_Annotations_SubjectPhenotypesDS.txt",
+      "geo_gse150910_counts": "data/source/GEO/GSE150910/GSE150910_gene-level_count_file.csv.gz",
+      "geo_gse150910_series_matrix": "data/source/GEO/GSE150910/GSE150910_series_matrix.txt.gz",
+      "osd248_dir": "data/source/OSDR/OSD-248",
+      "osd248_counts": "data/source/OSDR/OSD-248/GLDS-248_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv",
+      "osd248_isa_sample": "data/source/OSDR/OSD-248/OSD-248_metadata_GLDS-248-ISA/s_OSD-248.txt",
+      "osd248_isa_assay": "data/source/OSDR/OSD-248/OSD-248_metadata_GLDS-248-ISA/a_OSD-248_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq 6000.txt",
+      "osd248_genelab_de": "data/source/OSDR/OSD-248/GLDS-248_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv",
+      "osd248_genelab_contrasts": "data/source/OSDR/OSD-248/GLDS-248_rna_seq_contrasts_GLbulkRNAseq.csv",
+      "osd248_genelab_isst_de_subset": "outputs/tables/module4_osd248_genelab_isst_de_subset.tsv",
+      "ercc_exfold_expected": "data/reference/ercc_exfold_expected_fc.txt",
+      "hubmap_pseudobulk": "outputs/tables/module2_composition_weighted_pseudobulk.tsv",
+      "hubmap_max_across": "outputs/tables/module2_max_across_labels_pseudobulk.tsv",
+      "hubmap_fractions": "outputs/tables/module2_celltype_fractions.tsv",
+      "hubmap_integrated_h5ad": "data/processed/integrated/module2_hubmap_lung_integrated.h5ad",
+      "hubmap_donor_counts": "outputs/tables/module4_hubmap_donor_summed_counts.tsv",
+      "orthologs": "data/reference/human_mouse_orthologs_one2one.tsv"
+    },
+    "orthologs_meta": {
+      "source": "Ensembl BioMart hsapiens_gene_ensembl (with_mmusculus_homolog)",
+      "orthology_type": "ortholog_one2one",
+      "download_date": "2026-08-10",
+      "host": "www.ensembl.org"
+    },
+    "params": {
+      "gene_panel": [
+        "SFTPC",
+        "AGER",
+        "SCGB1A1",
+        "FOXJ1",
+        "PECAM1",
+        "COL1A1",
+        "ACTA2",
+        "CDKN1A",
+        "TGFB1"
+      ],
+      "highlight_pathways": [
+        "Epithelial Mesenchymal Transition",
+        "TGF-beta",
+        "Extracellular matrix"
+      ],
+      "nes_headline_pair": [
+        "H_DISEASE",
+        "H_AGING_GTEX"
+      ]
+    },
+    "sensitivity": {
+      "enabled": false,
+      "table": "outputs/tables/module4_nes_sensitivity.tsv"
+    },
+    "enrichment": {
+      "mode": "local_gmt",
+      "gene_sets": [
+        "MSigDB_Hallmark_2020",
+        "Reactome_2022"
+      ],
+      "comparison_gene_sets": [
+        "MSigDB_Hallmark_2020",
+        "Reactome_2022"
+      ],
+      "sensitivity_gene_sets": [
+        "MSigDB_Hallmark_2020",
+        "Reactome_2022",
+        "GO_Biological_Process_2023"
+      ],
+      "geneset_dir": "data/genesets",
+      "prerank": {
+        "enabled": true,
+        "min_size": 15,
+        "max_size": 500,
+        "permutation_num": 100
+      }
+    },
+    "thresholds": {
+      "rin_sensitivity": 6.0,
+      "de_min_count_sum": 10
+    },
+    "gtex": {
+      "contrast": "H_AGING_GTEX",
+      "tpm_file": "data/source/GTEX/gene_tpm_v10_lung.gct.gz",
+      "young_age_brackets": [
+        "20-29",
+        "30-39"
+      ],
+      "old_age_brackets": [
+        "60-69",
+        "70-79"
+      ],
+      "one_sample_per_subject": true,
+      "max_subjects_per_arm": 40,
+      "random_seed": 0
+    },
+    "hubmap_aging": {
+      "contrast": "H_AGING_HUBMAP",
+      "older_donors": [
+        "Donor_3",
+        "Donor_4"
+      ],
+      "younger_donors": [
+        "Donor_1",
+        "Donor_2"
+      ],
+      "design_note": "Illustration only. Age ranges sit inside GTEx middle brackets; power differs by an order of magnitude from H_AGING_GTEX.\n"
+    },
+    "geo": {
+      "accession": "GSE150910",
+      "include_diagnoses": [
+        "ipf",
+        "control"
+      ]
+    },
+    "osd248": {
+      "spaceflight_flight": "Space Flight",
+      "spaceflight_ground": "Ground Control",
+      "euthanasia_location_flight": "On ISS",
+      "euthanasia_location_ground": "On Earth",
+      "dissection_condition": "Carcass",
+      "duration": "~60",
+      "include_lar": false,
+      "include_baseline": false,
+      "rin_sensitivity_threshold": 6.0,
+      "qa_score_column": "Parameter Value[QA Score]",
+      "exclude_ercc_from_size_factors": true
+    },
+    "mechanisms": {
+      "fdr_q": 0.25,
+      "nes_abs_min": 1.5,
+      "fdr_q_strict": 0.05,
+      "cluster_jaccard_min": 0.5,
+      "n_permutations": 2000,
+      "random_seed": 0,
+      "top_intersection_genes": 40
+    },
+    "nes_pairs": [
+      [
+        "H_DISEASE",
+        "H_AGING_GTEX",
+        "biology_best_case"
+      ],
+      [
+        "H_DISEASE",
+        "M_FLIGHT",
+        "cross_ecosystem"
+      ],
+      [
+        "H_AGING_GTEX",
+        "M_FLIGHT",
+        "cross_ecosystem"
+      ],
+      [
+        "H_AGING_HUBMAP",
+        "H_AGING_GTEX",
+        "method"
+      ]
+    ]
+  },
+  "nes_stats_headline": {
+    "contrast_x": "H_DISEASE",
+    "contrast_y": "H_AGING_GTEX",
+    "pair_label": "H_DISEASE vs H_AGING_GTEX",
+    "frame": "biology_best_case",
+    "n_pathways_x": 1188,
+    "n_pathways_y": 1225,
+    "n_pathways_human": 1188,
+    "n_pathways_mouse": 1225,
+    "n_shared_pathways": 1185,
+    "spearman_nes": -0.19700781733806733,
+    "sign_agreement": 0.3957805907172996,
+    "spearman_p_note": "gene-set overlap violates independence; spearman_p is not a valid evidence claim for the headline",
+    "xlabel": "H_DISEASE NES",
+    "ylabel": "H_AGING_GTEX NES",
+    "spearman_p": 7.822376955772574e-12
+  },
+  "nes_pair_summary": [
+    {
+      "contrast_x": "H_DISEASE",
+      "contrast_y": "H_AGING_GTEX",
+      "frame": "biology_best_case",
+      "n_shared_pathways": 1185,
+      "spearman_rho": -0.19700781733806733,
+      "sign_agreement": 0.3957805907172996,
+      "spearman_p": 7.822376955772574e-12,
+      "spearman_p_note": "gene-set overlap violates independence; spearman_p is not a valid evidence claim for the headline"
+    },
+    {
+      "contrast_x": "H_DISEASE",
+      "contrast_y": "M_FLIGHT",
+      "frame": "cross_ecosystem",
+      "n_shared_pathways": 1136,
+      "spearman_rho": -0.10913040298895792,
+      "sign_agreement": 0.4841549295774648,
+      "spearman_p": 0.000228560507067863,
+      "spearman_p_note": "gene-set overlap violates independence; spearman_p is not a valid evidence claim for the headline"
+    },
+    {
+      "contrast_x": "H_AGING_GTEX",
+      "contrast_y": "M_FLIGHT",
+      "frame": "cross_ecosystem",
+      "n_shared_pathways": 1158,
+      "spearman_rho": -0.021858121970829043,
+      "sign_agreement": 0.46286701208981,
+      "spearman_p": 0.45741858413444375,
+      "spearman_p_note": "gene-set overlap violates independence; spearman_p is not a valid evidence claim for the headline"
+    },
+    {
+      "contrast_x": "H_AGING_HUBMAP",
+      "contrast_y": "H_AGING_GTEX",
+      "frame": "method",
+      "n_shared_pathways": 945,
+      "spearman_rho": 0.19064345285199039,
+      "sign_agreement": 0.582010582010582,
+      "spearman_p": 3.4830216683508223e-09,
+      "spearman_p_note": "gene-set overlap violates independence; spearman_p is not a valid evidence claim for the headline"
+    }
+  ],
+  "environment": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.1",
+    "anndata": "0.12.19",
+    "scanpy": "1.11.5",
+    "yaml": "6.0.3",
+    "harmonypy": "2.0.0",
+    "leidenalg": "0.12.0",
+    "igraph": "1.0.0",
+    "umap": "0.5.12",
+    "sklearn": "1.9.0",
+    "gseapy": "1.3.1",
+    "mudata": "0.3.10",
+    "muon": "0.1.9",
+    "pydeseq2": "0.5.4",
+    "h5py": "3.16.0"
+  },
+  "figures": {
+    "volcano_h_disease": "outputs/figures/module4_volcano_h_disease.png",
+    "volcano_h_aging_gtex": "outputs/figures/module4_volcano_h_aging_gtex.png",
+    "volcano_m_flight": "outputs/figures/module4_volcano_m_flight.png",
+    "volcano_h_aging_hubmap": "outputs/figures/module4_volcano_h_aging_hubmap.png",
+    "nes_scatter": "outputs/figures/module4_nes_scatter.png",
+    "nes_sensitivity": "outputs/figures/module4_nes_sensitivity.png",
+    "pseudobulk_vs_gtex": "outputs/figures/module4_pseudobulk_vs_gtex.png",
+    "ercc_calibration": "outputs/figures/module4_ercc_exfold_calibration.png",
+    "nes_scatter_H_DISEASE_vs_H_AGING_GTEX": "outputs/figures/module4_nes_scatter_H_DISEASE_vs_H_AGING_GTEX.png",
+    "nes_scatter_H_DISEASE_vs_M_FLIGHT": "outputs/figures/module4_nes_scatter_H_DISEASE_vs_M_FLIGHT.png",
+    "nes_scatter_H_AGING_GTEX_vs_M_FLIGHT": "outputs/figures/module4_nes_scatter_H_AGING_GTEX_vs_M_FLIGHT.png",
+    "nes_scatter_H_AGING_HUBMAP_vs_H_AGING_GTEX": "outputs/figures/module4_nes_scatter_H_AGING_HUBMAP_vs_H_AGING_GTEX.png"
+  },
+  "extras": {
+    "_compute_seconds": 295.357,
+    "peak_rss_mb": 5287.64,
+    "peak_rss_mb_start": 215.03,
+    "peak_rss_note": "process peak RSS so far (ru_maxrss); monotone across a loop, not per-step",
+    "ercc_calibration": {
+      "n_ercc_expected": 92,
+      "n_ercc_observed": 86,
+      "flight_mix": 1,
+      "ground_mix": 2,
+      "ols_slope": 0.9888407236950889,
+      "ols_intercept": -0.3398306233138027,
+      "ols_r2": 0.8817060396863435,
+      "spearman_obs_vs_exp": 0.9269457172513337,
+      "pearson_obs_vs_exp": 0.9389920338780006,
+      "mean_abs_residual": 0.4256568898778035,
+      "by_subgroup": [
+        {
+          "subgroup": "A",
+          "n": 21,
+          "expected": 2.0,
+          "mean_observed": 1.6034721710792894,
+          "mean_residual": -0.39652782892071076
+        },
+        {
+          "subgroup": "B",
+          "n": 21,
+          "expected": 0.0,
+          "mean_observed": -0.25765225946537385,
+          "mean_residual": -0.25765225946537385
+        },
+        {
+          "subgroup": "C",
+          "n": 22,
+          "expected": -0.58,
+          "mean_observed": -0.8657273450050705,
+          "mean_residual": -0.2857273450050706
+        },
+        {
+          "subgroup": "D",
+          "n": 22,
+          "expected": -1.0,
+          "mean_observed": -1.4219292417825118,
+          "mean_residual": -0.42192924178251184
+        }
+      ]
+    },
+    "genelab_isst_de_subset": "outputs/tables/module4_osd248_genelab_isst_de_subset.tsv",
+    "n_genelab_subset_rows": 32850
+  },
+  "_compute_seconds": 295.357,
+  "peak_rss_mb": 5287.64,
+  "honesty": {
+    "counts_merged_across_studies": false,
+    "ortholog_loss_reported": true,
+    "geo_is_cfde": false,
+    "nes_headline_gene_sets": [
+      "MSigDB_Hallmark_2020",
+      "Reactome_2022"
+    ],
+    "nes_headline_pair": [
+      "H_DISEASE",
+      "H_AGING_GTEX"
+    ],
+    "osd248_counts_pipeline": "RSEM_Unnormalized_Counts_rRNArm",
+    "hubmap_donor_counts_rounded": true,
+    "h_aging_hubmap_illustration_only": true
+  }
+}

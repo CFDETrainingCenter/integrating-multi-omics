@@ -1,0 +1,20 @@
+{
+  "dataset_id": "HBM828.GPVG.252",
+  "h5mu_path": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252/secondary_analysis.h5mu",
+  "h5mu_sha256": "067d296a2719dae1b53ddb5e20d6c832231ed5b28a9578c27581be6cecd63ddb",
+  "mofa_path": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252/multiome_mofa.hdf5",
+  "out_tsv": "outputs/tables/module3_label_cache_HBM828.GPVG.252.tsv",
+  "n_rows": 21978,
+  "columns": [
+    "barcode",
+    "leiden_wnn",
+    "azimuth_label",
+    "azimuth_id",
+    "prediction_score",
+    "wnn_umap_1",
+    "wnn_umap_2"
+  ],
+  "built_utc": "2026-08-13T18:42:18.007883+00:00",
+  "n_azimuth_labels": 34,
+  "n_leiden_wnn": 23
+}

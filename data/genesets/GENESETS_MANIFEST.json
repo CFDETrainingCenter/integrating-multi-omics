@@ -1,0 +1,44 @@
+{
+  "downloaded_utc": "2026-08-10T01:11:36.807487+00:00",
+  "source": "gseapy.get_library (Enrichr / Ma'ayan Lab)",
+  "organism": "Human",
+  "redistribution_channel": {
+    "name": "Enrichr / Ma'ayan Lab (via gseapy)",
+    "url": "https://maayanlab.cloud/Enrichr/"
+  },
+  "libraries": {
+    "MSigDB_Hallmark_2020": {
+      "file": "MSigDB_Hallmark_2020.gmt",
+      "bytes": 44336,
+      "n_terms": 50,
+      "path": "data/genesets/MSigDB_Hallmark_2020.gmt",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "copyright": "Broad Institute / MSigDB",
+      "upstream_url": "https://www.gsea-msigdb.org/gsea/msigdb/"
+    },
+    "Reactome_2022": {
+      "file": "Reactome_2022.gmt",
+      "bytes": 754668,
+      "n_terms": 1816,
+      "path": "data/genesets/Reactome_2022.gmt",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "copyright": "Reactome",
+      "upstream_url": "https://reactome.org/"
+    },
+    "GO_Biological_Process_2023": {
+      "file": "GO_Biological_Process_2023.gmt",
+      "bytes": 1373345,
+      "n_terms": 5406,
+      "path": "data/genesets/GO_Biological_Process_2023.gmt",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "copyright": "Gene Ontology Consortium",
+      "release_note": "Library label GO_Biological_Process_2023 via Enrichr; cite GO release date/DOI when publishing analyses that depend on GO contents.",
+      "upstream_url": "https://geneontology.org/",
+      "citation_policy_url": "https://geneontology.org/docs/go-citation-policy/",
+      "zenodo_archive_concept_doi": "10.5281/zenodo.1205166"
+    }
+  }
+}

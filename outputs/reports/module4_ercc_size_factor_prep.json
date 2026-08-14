@@ -1,0 +1,125 @@
+{
+  "ercc_read_fraction": {
+    "n_samples": 20,
+    "flight_n": 10,
+    "flight_mean_ercc_fraction": 0.01943060760595448,
+    "flight_median_ercc_fraction": 0.018411285496948697,
+    "flight_mean_ercc_counts": 999408.9,
+    "ground_n": 10,
+    "ground_mean_ercc_fraction": 0.024508407213832736,
+    "ground_median_ercc_fraction": 0.024408919985699017,
+    "ground_mean_ercc_counts": 1223915.0,
+    "flight_minus_ground_mean_fraction": -0.005077799607878256,
+    "flight_over_ground_mean_fraction": 0.7928139693626314
+  },
+  "ercc_calibration_after_exclusion": {
+    "n_ercc_expected": 92,
+    "n_ercc_observed": 86,
+    "flight_mix": 1,
+    "ground_mix": 2,
+    "ols_slope": 0.9888407236950889,
+    "ols_intercept": -0.3398306233138027,
+    "ols_r2": 0.8817060396863435,
+    "spearman_obs_vs_exp": 0.9269457172513337,
+    "pearson_obs_vs_exp": 0.9389920338780006,
+    "mean_abs_residual": 0.4256568898778035,
+    "by_subgroup": [
+      {
+        "subgroup": "A",
+        "n": 21,
+        "expected": 2.0,
+        "mean_observed": 1.6034721710792894,
+        "mean_residual": -0.39652782892071076
+      },
+      {
+        "subgroup": "B",
+        "n": 21,
+        "expected": 0.0,
+        "mean_observed": -0.25765225946537385,
+        "mean_residual": -0.25765225946537385
+      },
+      {
+        "subgroup": "C",
+        "n": 22,
+        "expected": -0.58,
+        "mean_observed": -0.8657273450050705,
+        "mean_residual": -0.2857273450050706
+      },
+      {
+        "subgroup": "D",
+        "n": 22,
+        "expected": -1.0,
+        "mean_observed": -1.4219292417825118,
+        "mean_residual": -0.42192924178251184
+      }
+    ]
+  },
+  "compare": [
+    {
+      "setting": "ercc_in_size_factors",
+      "pathway_n_pathways": 1164,
+      "pathway_k_pass": 38,
+      "pathway_k_up": 0,
+      "pathway_k_down": 38,
+      "pathway_p_up": 0.0,
+      "pathway_median_nes_all": -0.8883531525166677,
+      "pathway_frac_nes_negative_all": 0.8264604810996563,
+      "gene_n_genes": 29550,
+      "gene_sig05_up": 28,
+      "gene_sig05_dn": 37,
+      "gene_median_logFC_endo": -0.041040549374180446
+    },
+    {
+      "setting": "ercc_excluded_from_size_factors",
+      "pathway_n_pathways": 1164,
+      "pathway_k_pass": 34,
+      "pathway_k_up": 0,
+      "pathway_k_down": 34,
+      "pathway_p_up": 0.0,
+      "pathway_median_nes_all": -0.8869118978189863,
+      "pathway_frac_nes_negative_all": 0.8264604810996563,
+      "gene_n_genes": 29550,
+      "gene_sig05_up": 28,
+      "gene_sig05_dn": 39,
+      "gene_median_logFC_endo": -0.041458289435802084
+    }
+  ],
+  "mechanism_null": [
+    {
+      "set_id": "disease_aging",
+      "observed_concordant": 5,
+      "observed_concordant_unflagged": 5,
+      "perm_mean": 3.0075,
+      "perm_p_ge_obs": 0.169,
+      "p_b_up": 0.45625,
+      "p_c_up": ""
+    },
+    {
+      "set_id": "disease_flight",
+      "observed_concordant": 0,
+      "observed_concordant_unflagged": 0,
+      "perm_mean": 0.42,
+      "perm_p_ge_obs": 1.0,
+      "p_b_up": 0.0,
+      "p_c_up": ""
+    },
+    {
+      "set_id": "aging_flight",
+      "observed_concordant": 6,
+      "observed_concordant_unflagged": 3,
+      "perm_mean": 2.483,
+      "perm_p_ge_obs": 0.0255,
+      "p_b_up": 0.0,
+      "p_c_up": ""
+    },
+    {
+      "set_id": "three_way",
+      "observed_concordant": 0,
+      "observed_concordant_unflagged": 0,
+      "perm_mean": 0.0345,
+      "perm_p_ge_obs": 1.0,
+      "p_b_up": 0.45806451612903226,
+      "p_c_up": 0.0
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "timestamp_utc": "2026-08-14T14:00:30.838987+00:00",
+  "module2_de": {
+    "_scripts": [
+      "nb03_integration",
+      "nb04_de"
+    ],
+    "_bloom": [
+      "Apply",
+      "Analyze"
+    ],
+    "_instructional_minutes": 45,
+    "inputs": [
+      {
+        "donor_label": "Donor_1",
+        "block_id": "HBM347.VDHS.379",
+        "primary_id": "HBM347.VDHS.379",
+        "primary_doi": "10.35079/HBM347.VDHS.379",
+        "processed_id": "HBM675.RVGB.258",
+        "uuid": "171bd6114652ce2a1ff0e4757b5eaef9"
+      },
+      {
+        "donor_label": "Donor_2",
+        "block_id": "HBM473.NKMR.872",
+        "primary_id": "HBM473.NKMR.872",
+        "primary_doi": "10.35079/HBM473.NKMR.872",
+        "processed_id": "HBM362.DZVK.533",
+        "uuid": "4c031c4aba3b656a07a5ab14a305cbba"
+      },
+      {
+        "donor_label": "Donor_3",
+        "block_id": "HBM484.RGWP.797",
+        "primary_id": "HBM484.RGWP.797",
+        "primary_doi": "10.35079/HBM484.RGWP.797",
+        "processed_id": "HBM874.PWHS.622",
+        "uuid": "ab3942cee59a994d73f6f89f8f5eb84a"
+      },
+      {
+        "donor_label": "Donor_4",
+        "block_id": "HBM379.QCJT.435",
+        "primary_id": "HBM379.QCJT.435",
+        "primary_doi": "10.35079/HBM379.QCJT.435",
+        "processed_id": "HBM735.NMFW.852",
+        "uuid": "f5ce0bfcef8d17a18e0a3911fb2b2726"
+      }
+    ],
+    "random_seed": 0,
+    "exclude_intron_features": true,
+    "labels": {
+      "fetch_remote": false,
+      "cache": "outputs/tables/module2_azimuth_labels.tsv"
+    },
+    "embedding": {
+      "n_top_genes": 2000,
+      "n_pcs": 40,
+      "n_pcs_neighbors": 40,
+      "n_neighbors": 20,
+      "umap_min_dist": 0.25,
+      "umap_spread": 1.2,
+      "scale_max_value": 10,
+      "leiden_resolution": 0.8,
+      "leiden_resolutions": [
+        0.4,
+        0.8,
+        1.2
+      ]
+    },
+    "harmony": {
+      "enabled": true,
+      "key": "donor_id",
+      "max_iter_harmony": 20,
+      "theta": null
+    },
+    "diagnostics": {
+      "enabled": true,
+      "log_matrix_memory": true,
+      "knn_k": 30,
+      "max_cells": 8000,
+      "random_seed": null
+    },
+    "label_column": "azimuth_label",
+    "markers": [
+      "SFTPC",
+      "SFTPA1",
+      "AGER",
+      "SCGB1A1",
+      "FOXJ1",
+      "EPCAM",
+      "PECAM1",
+      "COL1A1",
+      "PTPRC"
+    ],
+    "export_pseudobulk": true,
+    "input_h5ad": "data/processed/integrated/module2_hubmap_lung_integrated.h5ad",
+    "groupby": "cell_class",
+    "azimuth_focus": [
+      "AT2",
+      "AT1",
+      "EC general capillary",
+      "Alveolar fibroblasts",
+      "CD8 T cells"
+    ],
+    "de": {
+      "method": "wilcoxon",
+      "n_genes": 3000,
+      "min_cells_per_group": 50,
+      "min_logfoldchange": 0.25,
+      "max_padj": 0.05,
+      "exclude_ribosomal_genes": true
+    },
+    "enrichment": {
+      "enabled": true,
+      "exclude_ribosomal_genes": null,
+      "mode": "local_gmt",
+      "gene_sets": [
+        "MSigDB_Hallmark_2020",
+        "Reactome_2022",
+        "GO_Biological_Process_2023"
+      ],
+      "geneset_dir": "data/genesets",
+      "organism": "human",
+      "top_genes_per_group": 100,
+      "cutoff_padj": 0.05,
+      "retry_max": 4,
+      "retry_backoff_sec": 5,
+      "pause_between_groups_sec": 3,
+      "prerank": {
+        "enabled": true,
+        "min_size": 15,
+        "max_size": 500,
+        "permutation_num": 100
+      }
+    },
+    "known_markers": {
+      "alveolar_epithelial": [
+        "SFTPC",
+        "SFTPA1",
+        "SFTPA2",
+        "AGER"
+      ],
+      "airway_epithelial": [
+        "SCGB1A1",
+        "FOXJ1",
+        "KRT5"
+      ],
+      "endothelial": [
+        "PECAM1",
+        "VWF",
+        "CLDN5"
+      ],
+      "fibroblast_stromal": [
+        "COL1A1",
+        "COL1A2",
+        "DCN",
+        "LUM"
+      ],
+      "immune": [
+        "PTPRC",
+        "CD3D",
+        "MS4A1",
+        "LST1",
+        "NKG7"
+      ],
+      "smooth_muscle_pericyte": [
+        "ACTA2",
+        "RGS5",
+        "PDGFRB"
+      ]
+    },
+    "gtex_context": false
+  },
+  "n_markers": 9921,
+  "n_enrichment_rows": 5327,
+  "n_prerank_rows": 11388,
+  "enrichment_failed_groups": [],
+  "n_input_genes_by_group": {
+    "endothelial": 100,
+    "epithelial": 100,
+    "immune": 100,
+    "stromal": 100
+  },
+  "methods_narrative": "Marker genes were identified on the Module 2 integrated HuBMAP lung object using scanpy.tl.rank_genes_groups (wilcoxon) grouped by `cell_class` with reference='rest' on log-normalized expression (scanpy 1.11.5). Gene symbols use `adata.var['hugo_symbol']` from the HuBMAP object (no GTEx read when `gtex_context=false`). Ribosomal protein genes (RPS/RPL/MRPS/MRPL, plus UBA52 and FAU which encode ribosomal proteins under non-RP names) were removed from reported marker tables so top-gene lists are not dominated by translation housekeeping. Genes with adjusted p<=0.05 and log-fold change>=0.25 were scored with over-representation enrichment (gseapy 1.3.1, mode=local_gmt) against local GMT libraries ['MSigDB_Hallmark_2020', 'Reactome_2022', 'GO_Biological_Process_2023'] using the object's measured gene symbols as background, again excluding ribosomal protein genes from enrichment inputs. Preranked GSEA (NES) uses Wilcoxon scores against the same GMTs when enabled. Cross-resource GTEx context is deferred to Module 4. Enrichment results are hypothesis-generating; this pipeline does not assert biological consistency.",
+  "methods_table": [
+    {
+      "step": "Input",
+      "parameters": "data/processed/integrated/module2_hubmap_lung_integrated.h5ad",
+      "package_or_function": "Module 2 integrated AnnData"
+    },
+    {
+      "step": "Comparison groups",
+      "parameters": "groupby=cell_class",
+      "package_or_function": "obs categorical"
+    },
+    {
+      "step": "Optional fine DE",
+      "parameters": "azimuth_focus=['AT2', 'AT1', 'EC general capillary', 'Alveolar fibroblasts', 'CD8 T cells']",
+      "package_or_function": "scanpy.tl.rank_genes_groups"
+    },
+    {
+      "step": "Marker DE",
+      "parameters": "method=wilcoxon, n_genes=3000, min_cells_per_group=50, reference=rest",
+      "package_or_function": "scanpy.tl.rank_genes_groups (Wilcoxon)"
+    },
+    {
+      "step": "Expression matrix for DE",
+      "parameters": "log-normalized `.X` (counts retained in `.layers['counts']`)",
+      "package_or_function": "scanpy / anndata"
+    },
+    {
+      "step": "Gene symbol resolution",
+      "parameters": "use adata.var hugo_symbol from HuBMAP object (no GTEx read when gtex_context=false)",
+      "package_or_function": "scripts.nb04_de.load.gene_symbol_series"
+    },
+    {
+      "step": "Marker DE table filter",
+      "parameters": "exclude_ribosomal_genes=True (RPS/RPL/MRPS/MRPL plus named exceptions UBA52, FAU removed from reported marker tables)",
+      "package_or_function": "pandas filter after rank_genes_groups"
+    },
+    {
+      "step": "Enrichment gene filter",
+      "parameters": "padj<=0.05, logFC>=0.25, top=100, exclude_ribosomal_genes=True (config null follows de.exclude_ribosomal_genes=True)",
+      "package_or_function": "pandas filters (drop RPS/RPL/MRPS/MRPL and UBA52/FAU)"
+    },
+    {
+      "step": "Pathway enrichment (ORA)",
+      "parameters": "mode=local_gmt, gene_sets=['MSigDB_Hallmark_2020', 'Reactome_2022', 'GO_Biological_Process_2023'], background=measured gene symbols, cutoff_padj=0.05",
+      "package_or_function": "gseapy.enrich against local GMT (Enrichr online opt-in only)"
+    },
+    {
+      "step": "Preranked GSEA",
+      "parameters": "enabled=True, permutation_num=100",
+      "package_or_function": "gseapy.prerank on Wilcoxon scores (NES)"
+    },
+    {
+      "step": "Known marker validation",
+      "parameters": "curated lung marker panel via HUGO when present, else Ensembl ID in var_names",
+      "package_or_function": "dotplot"
+    },
+    {
+      "step": "GTEx context",
+      "parameters": "enabled=False (Module 2 default false; Module 4 only)",
+      "package_or_function": "not used in Module 2"
+    },
+    {
+      "step": "Random seed",
+      "parameters": "0",
+      "package_or_function": "config"
+    }
+  ],
+  "environment": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.1",
+    "anndata": "0.12.19",
+    "scanpy": "1.11.5",
+    "yaml": "6.0.3",
+    "harmonypy": "2.0.0",
+    "leidenalg": "0.12.0",
+    "igraph": "1.0.0",
+    "umap": "0.5.12",
+    "sklearn": "1.9.0",
+    "gseapy": "1.3.1",
+    "mudata": "0.3.10",
+    "muon": "0.1.9",
+    "pydeseq2": "0.5.4",
+    "h5py": "3.16.0"
+  },
+  "figures": {
+    "known_marker_dotplot": "outputs/figures/module2_known_marker_dotplot.png",
+    "marker_dotplot": "outputs/figures/module2_marker_dotplot.png",
+    "enrichment_summary": "outputs/figures/module2_enrichment_summary.png"
+  },
+  "extras": {
+    "rank_key": "rank_genes_cell_class",
+    "prerank_rank_key": "rank_genes_cell_class_prerank",
+    "azimuth_focus_key": "rank_genes_azimuth_focus",
+    "n_azimuth_focus_markers": 12456,
+    "n_markers_for_enrichment": 400,
+    "n_background_genes": 16372,
+    "n_ribosomal_removed_from_marker_table": 247,
+    "n_ribosomal_removed_before_enrichment": 0,
+    "exclude_ribosomal_genes_de": true,
+    "exclude_ribosomal_genes": true,
+    "_compute_seconds": 23.156,
+    "peak_rss_mb": 7499.61,
+    "peak_rss_mb_start": 4756.89,
+    "peak_rss_note": "process peak RSS so far (ru_maxrss); monotone across a loop, not per-step"
+  },
+  "_compute_seconds": 23.156,
+  "peak_rss_mb": 7499.61
+}

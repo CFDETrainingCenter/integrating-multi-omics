@@ -1,0 +1,177 @@
+{
+  "timestamp_utc": "2026-08-14T13:59:06.302583+00:00",
+  "module": 1,
+  "block_id": "HBM473.NKMR.872",
+  "donor_label": "Donor_2",
+  "donor_id": "HBM994.NXZC.854",
+  "n_obs": 5000,
+  "n_vars": 49754,
+  "qc": {
+    "min_genes": 200,
+    "min_counts": 500,
+    "max_mito_percent": 5.0,
+    "max_genes": 8000,
+    "min_cells_per_gene": 3
+  },
+  "preprocess": {
+    "target_sum": 10000,
+    "n_top_genes": 2000,
+    "n_pcs": 50,
+    "n_neighbors": 15,
+    "umap_min_dist": 0.3,
+    "umap_spread": 1.0,
+    "scale_max_value": 10
+  },
+  "doublet_filtering": false,
+  "max_nuclei": 5000,
+  "random_seed": 0,
+  "source_file": "data/source/HUBMAP/Donor_2/snRNAseq/HBM473.NKMR.872/raw_expr.h5ad",
+  "inputs": {
+    "raw_expr": {
+      "path": "data/source/HUBMAP/Donor_2/snRNAseq/HBM473.NKMR.872/raw_expr.h5ad",
+      "sha256": "979bac668d8c2f528fa1cb17bf38bc4fda789ccf92ad13537b47d739574b0dd1"
+    }
+  },
+  "methods_narrative": "HuBMAP lung snRNA-seq nuclei were loaded from Salmon-processed `raw_expr.h5ad` (scanpy 1.11.5, anndata 0.12.19). QC used scanpy.pp.calculate_qc_metrics for gene counts, UMI totals, and mitochondrial/ribosomal percentages, then filtered to min_genes=200, min_counts=500, max_mito_percent=5.0, max_genes=8000, and genes in >=3 nuclei. Doublet detection was not applied in the core teaching path. Counts were library-size normalized (target_sum=10000) and log1p-transformed with raw counts retained in `.layers['counts']`. Highly variable genes (Seurat flavor, n=2000) were scaled (clip=10) and embedded with PCA (50 components, arpack). A kNN graph (n_neighbors=15) and UMAP (min_dist=0.3, spread=1.0) were computed for visualization.",
+  "methods_table": [
+    {
+      "step": "Input matrix",
+      "parameters": "HuBMAP Salmon `raw_expr.h5ad` (counts-like)",
+      "package_or_function": "anndata / scanpy"
+    },
+    {
+      "step": "QC metrics",
+      "parameters": "scanpy.pp.calculate_qc_metrics (mt, ribo)",
+      "package_or_function": "scanpy"
+    },
+    {
+      "step": "Gene filter",
+      "parameters": "min_cells=3",
+      "package_or_function": "scanpy.pp.filter_genes"
+    },
+    {
+      "step": "Cell filter: complexity",
+      "parameters": "min_genes=200",
+      "package_or_function": "scanpy.pp.filter_cells"
+    },
+    {
+      "step": "Cell filter: depth",
+      "parameters": "min_counts=500",
+      "package_or_function": "obs threshold"
+    },
+    {
+      "step": "Cell filter: mito",
+      "parameters": "max_mito_percent=5.0",
+      "package_or_function": "obs threshold"
+    },
+    {
+      "step": "Cell filter: max genes",
+      "parameters": "max_genes=8000",
+      "package_or_function": "obs threshold"
+    },
+    {
+      "step": "Doublet filtering",
+      "parameters": "Not applied in core path (HuBMAP processed nuclei; optional Scrublet deferred)",
+      "package_or_function": "n/a"
+    },
+    {
+      "step": "Normalization",
+      "parameters": "normalize_total target_sum=10000",
+      "package_or_function": "scanpy.pp.normalize_total"
+    },
+    {
+      "step": "Log transform",
+      "parameters": "log1p",
+      "package_or_function": "scanpy.pp.log1p"
+    },
+    {
+      "step": "Feature selection",
+      "parameters": "Seurat HVG n_top_genes=2000",
+      "package_or_function": "scanpy.pp.highly_variable_genes"
+    },
+    {
+      "step": "Scaling",
+      "parameters": "max_value=10 (HVG subset)",
+      "package_or_function": "scanpy.pp.scale"
+    },
+    {
+      "step": "PCA",
+      "parameters": "n_comps=50, svd_solver=arpack",
+      "package_or_function": "scanpy.tl.pca"
+    },
+    {
+      "step": "Neighbors graph",
+      "parameters": "n_neighbors=15, n_pcs=50",
+      "package_or_function": "scanpy.pp.neighbors"
+    },
+    {
+      "step": "UMAP",
+      "parameters": "min_dist=0.3, spread=1.0",
+      "package_or_function": "scanpy.tl.umap (umap-learn)"
+    },
+    {
+      "step": "Teaching subsample",
+      "parameters": "max_nuclei=5000",
+      "package_or_function": "numpy RNG"
+    },
+    {
+      "step": "Random seed",
+      "parameters": "0",
+      "package_or_function": "config"
+    }
+  ],
+  "environment": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.1",
+    "anndata": "0.12.19",
+    "scanpy": "1.11.5",
+    "yaml": "6.0.3",
+    "harmonypy": "2.0.0",
+    "leidenalg": "0.12.0",
+    "igraph": "1.0.0",
+    "umap": "0.5.12",
+    "sklearn": "1.9.0",
+    "gseapy": "1.3.1",
+    "mudata": "0.3.10",
+    "muon": "0.1.9",
+    "pydeseq2": "0.5.4",
+    "h5py": "3.16.0"
+  },
+  "figures": {
+    "qc_violins": "outputs/figures/module1_HBM473.NKMR.872_qc_violins.png",
+    "counts_vs_genes": "outputs/figures/module1_HBM473.NKMR.872_qc_counts_vs_genes.png",
+    "counts_vs_mito": "outputs/figures/module1_HBM473.NKMR.872_qc_counts_vs_mito.png",
+    "umap": "outputs/figures/module1_HBM473.NKMR.872_umap.png"
+  },
+  "extras": {
+    "label_join": {
+      "joined": true,
+      "source": "cache",
+      "path": "outputs/tables/module2_azimuth_labels.tsv",
+      "n_raw": 10996,
+      "n_overlap": 10989,
+      "n_raw_without_label": 7,
+      "fraction_raw_with_label": 0.999363,
+      "local_join_reason": "secondary_analysis missing"
+    },
+    "subsample": {
+      "subsampled": true,
+      "n_obs_before": 8508,
+      "n_obs_after": 5000,
+      "n_nuclei": 5000,
+      "max_nuclei": 5000,
+      "seed": 0,
+      "step": "teaching_subsample",
+      "rationale": "capped at module1.max_nuclei=5000, seed=0"
+    },
+    "donor_label": "Donor_2",
+    "_compute_seconds": 5.674,
+    "peak_rss_mb": 2455.88,
+    "peak_rss_mb_start": 1528.94,
+    "peak_rss_note": "process peak RSS so far (ru_maxrss); monotone across a loop, not per-step"
+  },
+  "_compute_seconds": 5.674,
+  "peak_rss_mb": 2455.88
+}

@@ -1,0 +1,17 @@
+{
+  "adult_globin_ids": {
+    "ENSMUSG00000069917": "Hba-a1",
+    "ENSMUSG00000069919": "Hba-a2",
+    "ENSMUSG00000073940": "Hbb-bs",
+    "ENSMUSG00000052305": "Hbb-bt"
+  },
+  "globin_adult_flight_mean_fraction": 0.013287157766687735,
+  "globin_adult_ground_mean_fraction": 0.009642031357310092,
+  "globin_adult_flight_minus_ground": 0.003645126409377643,
+  "globin_adult_flight_over_ground": 1.3780454838091867,
+  "globin_adult_pct_flight": 1.3287157766687736,
+  "globin_adult_pct_ground": 0.9642031357310091,
+  "top5_flight_minus_ground": 0.011987216256963168,
+  "materially_higher_globin_in_flight": false,
+  "interpretation": "Adult globins are present at ~1% of non-ERCC library in both arms. Flight 1.33% vs ground 0.96% (delta 0.36 pp). Not a flight-specific dominance pattern at the scale that would explain unanimous pathway NES down. Ortholog table lacks adult globins (multi-copy); diagnostic must use Ensembl IDs."
+}

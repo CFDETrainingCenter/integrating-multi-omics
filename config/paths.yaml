@@ -1,0 +1,503 @@
+# CFDE lung transcriptomics course  -  path and analysis config
+# Learner-facing module numbers (1-4). Internal scripts: nb01-nb06 (see docs/module_numbering.md).
+# Edit params / thresholds here; notebooks should not hardcode them.
+
+project_name: CFDE_Lung_Module
+cohort:
+  # Settled 2026-08-09: Donor_1, Donor_2, Donor_3, Donor_4
+  donors: [Donor_1, Donor_2, Donor_3, Donor_4]
+  age_split:
+    younger: [Donor_2, Donor_1]   # 25, 37
+    older: [Donor_4, Donor_3]     # 52.96, 56.8
+
+# ---------------------------------------------------------------------------
+# Donors (teaching cohort only)
+# ---------------------------------------------------------------------------
+donor_1:
+  donor_id: HBM943.SCQQ.877
+  label: Donor_1
+  age: 37
+  sex: Male
+  race: Black or African American
+  organ: Lung (Right)
+  teaching_block: HBM347.VDHS.379
+  primary_doi: 10.35079/HBM347.VDHS.379
+
+donor_2:
+  donor_id: HBM994.NXZC.854
+  label: Donor_2
+  age: 25
+  sex: Female
+  race: White
+  organ: Lung
+  teaching_block: HBM473.NKMR.872
+  primary_doi: 10.35079/HBM473.NKMR.872
+  blocks:
+    - HBM434.GKNQ.757
+    - HBM473.NKMR.872
+    - HBM879.KGML.575
+    - HBM897.WVVR.437
+
+donor_3:
+  donor_id: HBM643.KCCK.866
+  label: Donor_3
+  age: 56.8
+  sex: Female
+  race: Hispanic or Latino
+  organ: Lung
+  teaching_block: HBM484.RGWP.797
+  primary_doi: 10.35079/HBM484.RGWP.797
+  blocks:
+    - HBM484.RGWP.797
+    - HBM685.XWPB.694
+    - HBM769.JMPX.755
+    - HBM927.ZWBG.769
+
+donor_4:
+  donor_id: HBM428.GRPJ.489
+  label: Donor_4
+  age: 52.96
+  sex: Male
+  race: White
+  organ: Lung
+  teaching_block: HBM379.QCJT.435
+  primary_doi: 10.35079/HBM379.QCJT.435
+  blocks:
+    - HBM379.QCJT.435
+    - HBM635.DQXB.362
+
+# ---------------------------------------------------------------------------
+# Module 1  -  discovery + QC  (scripts: nb01_discovery, nb02_qc)
+# SmartAPI live queries deferred; default is local inventory / offline cache.
+# ---------------------------------------------------------------------------
+module1:
+  _scripts: [nb01_discovery, nb02_qc]
+  _bloom: [Remember, Understand, Apply]
+  _instructional_minutes: 30
+  donor_label: Donor_1
+  # Local directory key (primary folder on disk). Prefer processed_id for portal IDs.
+  block_id: HBM347.VDHS.379
+  primary_id: HBM347.VDHS.379
+  primary_doi: 10.35079/HBM347.VDHS.379
+  processed_id: HBM675.RVGB.258
+  uuid: 171bd6114652ce2a1ff0e4757b5eaef9
+  join_azimuth_labels: true
+  random_seed: 0
+  max_nuclei: 5000
+  discovery:
+    # Live SmartAPI / Search API calls are off until post-notebook exploration.
+    live_query: false
+    cache_registry: outputs/tables/module1_smartapi_registry.tsv
+    cache_hubmap_query: outputs/tables/module1_hubmap_api_query.tsv
+  # Live QC thresholds (do not revive module1.thresholds / module1.params decoys).
+  qc:
+    min_genes: 200
+    min_counts: 500
+    max_mito_percent: 5.0
+    max_genes: 8000
+    min_cells_per_gene: 3
+  doublet_filtering: false
+  preprocess:
+    target_sum: 10000
+    n_top_genes: 2000
+    n_pcs: 50
+    n_neighbors: 15
+    umap_min_dist: 0.3
+    umap_spread: 1.0
+    scale_max_value: 10
+
+# ---------------------------------------------------------------------------
+# Module 2 - integration + DE + pathways  (scripts: nb03_integration, nb04_de)
+# Single-resource (HuBMAP only). GTEx enters at Module 4.
+# ---------------------------------------------------------------------------
+module2:
+  _scripts: [nb03_integration, nb04_de]
+  _bloom: [Apply, Analyze]
+  _instructional_minutes: 45
+  inputs:
+    - donor_label: Donor_1
+      block_id: HBM347.VDHS.379
+      primary_id: HBM347.VDHS.379
+      primary_doi: 10.35079/HBM347.VDHS.379
+      processed_id: HBM675.RVGB.258
+      uuid: 171bd6114652ce2a1ff0e4757b5eaef9
+    - donor_label: Donor_2
+      block_id: HBM473.NKMR.872
+      primary_id: HBM473.NKMR.872
+      primary_doi: 10.35079/HBM473.NKMR.872
+      processed_id: HBM362.DZVK.533
+      uuid: 4c031c4aba3b656a07a5ab14a305cbba
+    - donor_label: Donor_3
+      block_id: HBM484.RGWP.797
+      primary_id: HBM484.RGWP.797
+      primary_doi: 10.35079/HBM484.RGWP.797
+      processed_id: HBM874.PWHS.622
+      uuid: ab3942cee59a994d73f6f89f8f5eb84a
+    - donor_label: Donor_4
+      block_id: HBM379.QCJT.435
+      primary_id: HBM379.QCJT.435
+      primary_doi: 10.35079/HBM379.QCJT.435
+      processed_id: HBM735.NMFW.852
+      uuid: f5ce0bfcef8d17a18e0a3911fb2b2726
+  random_seed: 0
+  exclude_intron_features: true
+  labels:
+    # Live HTTP range fetch of azimuth_label from public secondary_analysis.h5ad.
+    # Default false: use local join / cached TSV. Screencast can flip this on.
+    fetch_remote: false
+    cache: outputs/tables/module2_azimuth_labels.tsv
+  embedding:
+    n_top_genes: 2000
+    n_pcs: 40
+    n_pcs_neighbors: 40
+    n_neighbors: 20
+    umap_min_dist: 0.25
+    umap_spread: 1.2
+    scale_max_value: 10
+    leiden_resolution: 0.8
+    # Resolution exploration (stored as leiden_r*; default leiden kept at leiden_resolution)
+    leiden_resolutions: [0.4, 0.8, 1.2]
+  harmony:
+    enabled: true
+    key: donor_id
+    max_iter_harmony: 20
+    theta: null
+  diagnostics:
+    # Mixing / silhouette are optional learner diagnostics (not required for DE).
+    # Set enabled false if RAM floor should reflect analysis only.
+    enabled: true
+    log_matrix_memory: true
+    # Harmony mixing / silhouette subsample knobs (also recorded in run params)
+    knn_k: 30
+    max_cells: 8000
+    # null -> module2.random_seed
+    random_seed: null
+  label_column: azimuth_label
+  markers:
+    - SFTPC
+    - SFTPA1
+    - AGER
+    - SCGB1A1
+    - FOXJ1
+    - EPCAM
+    - PECAM1
+    - COL1A1
+    - PTPRC
+  # Pseudobulk for Module 4: composition-weighted + max-across-labels (linear scale)
+  export_pseudobulk: true
+  # DE / enrichment (same learner module; scripts nb04_de)
+  input_h5ad: data/processed/integrated/module2_hubmap_lung_integrated.h5ad
+  groupby: cell_class
+  azimuth_focus:
+    - AT2
+    - AT1
+    - EC general capillary
+    - Alveolar fibroblasts
+    - CD8 T cells
+  de:
+    method: wilcoxon
+    # Large enough for prerank GSEA ranked lists; ORA still uses top_genes_per_group
+    n_genes: 3000
+    min_cells_per_group: 50
+    min_logfoldchange: 0.25
+    max_padj: 0.05
+    exclude_ribosomal_genes: true
+  enrichment:
+    enabled: true
+    exclude_ribosomal_genes: null
+    # Offline local GMT + measured-gene background (default). Enrichr online is opt-in only.
+    mode: local_gmt  # local_gmt | enrichr_online
+    # GMT basenames under paths.genesets (no KEGG - Hallmark / Reactome / GO BP)
+    gene_sets:
+      - MSigDB_Hallmark_2020
+      - Reactome_2022
+      - GO_Biological_Process_2023
+    geneset_dir: data/genesets
+    organism: human
+    top_genes_per_group: 100
+    cutoff_padj: 0.05
+    # Online Enrichr only (unused when mode=local_gmt)
+    retry_max: 4
+    retry_backoff_sec: 5
+    pause_between_groups_sec: 3
+    # Preranked GSEA (NES) on Wilcoxon scores - same GMT libraries
+    prerank:
+      enabled: true
+      min_size: 15
+      max_size: 500
+      permutation_num: 100
+  known_markers:
+    alveolar_epithelial: [SFTPC, SFTPA1, SFTPA2, AGER]
+    airway_epithelial: [SCGB1A1, FOXJ1, KRT5]
+    endothelial: [PECAM1, VWF, CLDN5]
+    fibroblast_stromal: [COL1A1, COL1A2, DCN, LUM]
+    immune: [PTPRC, CD3D, MS4A1, LST1, NKG7]
+    smooth_muscle_pericyte: [ACTA2, RGS5, PDGFRB]
+  gtex_context: false
+
+# ---------------------------------------------------------------------------
+# Module 3  -  multiome MOFA interpretation  (scripts: nb05_multimodal)
+# Default: interpretation from multiome_mofa.hdf5 (~141 MB), not full h5mu recompute.
+# Teaching product is Donor_2 HBM828.GPVG.252 (matched snRNA block HBM473.NKMR.872).
+# ---------------------------------------------------------------------------
+module3:
+  _scripts: [nb05_multimodal]
+  _bloom: [Analyze]
+  _instructional_minutes: 35
+  donor_label: Donor_2
+  donor_id: HBM994.NXZC.854
+  dataset_id: HBM828.GPVG.252
+  uuid: 772d0ce4657bb306359c0230c57ee1e9
+  assay: SNARE-seq2 [Salmon + ArchR + Muon]
+  portal_url: https://portal.hubmapconsortium.org/browse/dataset/HBM828.GPVG.252
+  multiome_dir: data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252
+  matched_snrna:
+    primary_id: HBM473.NKMR.872
+    processed_id: HBM362.DZVK.533
+    block_id: HBM337.KBLS.364
+    section_id: HBM537.RWMB.765
+    suspension_id: HBM863.FXRR.429
+    note: same block and section as the multiome; different nuclei, so no per-nucleus join
+  params:
+    load_h5mu: false          # interpretation-first default (~141 MB MOFA + committed label cache)
+    interpretation_only: true
+    # Optional extension: secondary_analysis.h5mu ~14.7 GiB  -  not required for teaching path
+    secondary_h5mu_size_note: "~14.7 GiB; optional unless load_h5mu=true; learners do not download it"
+  thresholds:
+    min_nuclei_correlation: 50   # flag correlations with n below this
+    noise_delta_r: 0.01          # within-type vs global margin treated as noise
+    min_cluster_size: 20
+    min_label_prediction_score: 0.0
+  files:
+    secondary_h5mu: secondary_analysis.h5mu
+    mudata_raw_h5mu: mudata_raw.h5mu
+    mofa_hdf5: multiome_mofa.hdf5
+    pdf_combined: leiden_cluster_combined.pdf
+    pdf_rna: leiden_cluster_rna.pdf
+    pdf_atac: leiden_cluster_atac.pdf
+    label_cache: outputs/tables/module3_label_cache_HBM828.GPVG.252.tsv
+  modalities:
+    rna: rna
+    atac_gene: atac_cbg
+    atac_bin: atac_cbb
+    use_atac_bin: false
+  analysis:
+    random_seed: 0
+    max_nuclei_preview: 5000
+    bridge_metric: feature_std_on_mofa_inputs
+    # Prefer nuclear-inclusive layer when MuData is loaded (Phase 3 Q1)
+    rna_layer: spliced_unspliced_sum
+    rna_layer_fallback: spliced
+    mofa_variance_max_factor: 18   # factors 19-30 are numerically dead
+    focus_genes:
+      - SFTPC
+      - SFTPA2
+      - AGER
+      - SCGB1A1
+      - FOXJ1
+      - PECAM1
+      - CLDN5
+      - LUM
+      - PTPRC
+      - NKG7
+      - ACTA2
+      - PDGFRB
+    focus_genes_not_in_both_modalities:
+      - EPCAM
+    focus_gene_cell_types:
+      SFTPC: [AT2]
+      SFTPA2: [AT2]
+      AGER: [AT1]
+      SCGB1A1: [Transitional Club-AT2]
+      FOXJ1: [Multiciliated (non-nasal)]
+      PECAM1: [EC general capillary, EC aerocyte capillary, EC arterial, EC venous pulmonary, EC venous systemic]
+      CLDN5: [EC general capillary, EC aerocyte capillary, EC arterial, EC venous pulmonary, EC venous systemic]
+      LUM: [Alveolar fibroblasts, Adventitial fibroblasts]
+      PTPRC: [CD8 T cells, CD4 T cells, B cells, Classical monocytes, Non-classical monocytes, Alveolar macrophages]
+      NKG7: [CD8 T cells]
+      ACTA2: [Myofibroblasts, Smooth muscle, SM activated stress response]
+      PDGFRB: [Pericytes]
+  interpretation: true
+
+# ---------------------------------------------------------------------------
+# Module 4  -  cross-ecosystem bulk  (scripts: nb06_crossres)  [Phase 4 build]
+# ---------------------------------------------------------------------------
+module4:
+  _scripts: [nb06_crossres]
+  _bloom: [Analyze, Evaluate]
+  _instructional_minutes: 30
+  # Rebuild 2026-08-10: four contrasts, four NES pairs (see MODULE4_REBUILD_2026-08-10.md)
+  data:
+    gtex_tpm: data/source/GTEX/gene_tpm_v10_lung.gct.gz
+    gtex_reads: data/source/GTEX/gene_reads_v10_lung.gct.gz
+    gtex_sample_attrs: data/source/GTEX/GTEx_Analysis_v10_Annotations_SampleAttributesDS.txt
+    gtex_subject_pheno: data/source/GTEX/GTEx_Analysis_v10_Annotations_SubjectPhenotypesDS.txt
+    geo_gse150910_counts: data/source/GEO/GSE150910/GSE150910_gene-level_count_file.csv.gz
+    geo_gse150910_series_matrix: data/source/GEO/GSE150910/GSE150910_series_matrix.txt.gz
+    osd248_dir: data/source/OSDR/OSD-248
+    # RSEM expected counts (rRNArm). Round to integers before pydeseq2.
+    osd248_counts: data/source/OSDR/OSD-248/GLDS-248_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv
+    osd248_isa_sample: data/source/OSDR/OSD-248/OSD-248_metadata_GLDS-248-ISA/s_OSD-248.txt
+    osd248_isa_assay: data/source/OSDR/OSD-248/OSD-248_metadata_GLDS-248-ISA/a_OSD-248_transcription-profiling_rna-sequencing-(rna-seq)_Illumina NovaSeq 6000.txt
+    osd248_genelab_de: data/source/OSDR/OSD-248/GLDS-248_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv
+    osd248_genelab_contrasts: data/source/OSDR/OSD-248/GLDS-248_rna_seq_contrasts_GLbulkRNAseq.csv
+    # Committed GeneLab ISS-T flight vs ground subset (extracted from the 111 MB DE CSV)
+    osd248_genelab_isst_de_subset: outputs/tables/module4_osd248_genelab_isst_de_subset.tsv
+    # Thermo Fisher ExFold expected Mix1/Mix2 fold changes (cms_095046.txt)
+    ercc_exfold_expected: data/reference/ercc_exfold_expected_fc.txt
+    # Level bridge only (linear CP10K composition-weighted / max-across)
+    hubmap_pseudobulk: outputs/tables/module2_composition_weighted_pseudobulk.tsv
+    hubmap_max_across: outputs/tables/module2_max_across_labels_pseudobulk.tsv
+    hubmap_fractions: outputs/tables/module2_celltype_fractions.tsv
+    # Summed counts-layer per donor for H_AGING_HUBMAP (not interchangeable with bridge)
+    hubmap_integrated_h5ad: data/processed/integrated/module2_hubmap_lung_integrated.h5ad
+    hubmap_donor_counts: outputs/tables/module4_hubmap_donor_summed_counts.tsv
+    orthologs: data/reference/human_mouse_orthologs_one2one.tsv
+  orthologs_meta:
+    source: Ensembl BioMart hsapiens_gene_ensembl (with_mmusculus_homolog)
+    orthology_type: ortholog_one2one
+    download_date: "2026-08-10"
+    host: www.ensembl.org
+  params:
+    gene_panel:
+      - SFTPC
+      - AGER
+      - SCGB1A1
+      - FOXJ1
+      - PECAM1
+      - COL1A1
+      - ACTA2
+      - CDKN1A
+      - TGFB1
+    highlight_pathways:
+      - Epithelial Mesenchymal Transition
+      - TGF-beta
+      - Extracellular matrix
+    # Sensitivity gene-set table attaches to this NES pair (best-case biology pair)
+    nes_headline_pair: [H_DISEASE, H_AGING_GTEX]
+  # GO BP sensitivity prerank is optional and expensive (~12 GB peak). Shipped default
+  # loads the committed TSV (same pattern as module3.params.load_h5mu).
+  sensitivity:
+    enabled: false
+    table: outputs/tables/module4_nes_sensitivity.tsv
+  enrichment:
+    mode: local_gmt
+    # Module 4 enrichment / NES comparison: Hallmark + Reactome only (no GO BP; see P6-7)
+    gene_sets:
+      - MSigDB_Hallmark_2020
+      - Reactome_2022
+    comparison_gene_sets:
+      - MSigDB_Hallmark_2020
+      - Reactome_2022
+    # Sensitivity asset only (not headline): include GO BP to show robustness
+    sensitivity_gene_sets:
+      - MSigDB_Hallmark_2020
+      - Reactome_2022
+      - GO_Biological_Process_2023
+    geneset_dir: data/genesets
+    prerank:
+      enabled: true
+      min_size: 15
+      max_size: 500
+      permutation_num: 100
+  thresholds:
+    rin_sensitivity: 6.0
+    de_min_count_sum: 10
+  # Predeclared before looking at DE results (MODULE4_REBUILD section 3a).
+  # Lung sample/subject counts: 20-29 thin on old extreme (70-79 n_subj=27), so
+  # widen to 20-39 vs 60-79. One lung sample per subject; cap per arm for runtime.
+  gtex:
+    contrast: H_AGING_GTEX
+    tpm_file: data/source/GTEX/gene_tpm_v10_lung.gct.gz
+    young_age_brackets: ["20-29", "30-39"]
+    old_age_brackets: ["60-69", "70-79"]
+    one_sample_per_subject: true
+    max_subjects_per_arm: 40
+    random_seed: 0
+  hubmap_aging:
+    contrast: H_AGING_HUBMAP
+    # Older vs younger: 56.8 + 52.96 vs 37 + 25 (illustration only; 2 vs 2)
+    older_donors: [Donor_3, Donor_4]
+    younger_donors: [Donor_1, Donor_2]
+    design_note: >
+      Illustration only. Age ranges sit inside GTEx middle brackets;
+      power differs by an order of magnitude from H_AGING_GTEX.
+  geo:
+    accession: GSE150910
+    include_diagnoses: [ipf, control]
+  osd248:
+    spaceflight_flight: "Space Flight"
+    spaceflight_ground: "Ground Control"
+    euthanasia_location_flight: "On ISS"
+    euthanasia_location_ground: "On Earth"
+    dissection_condition: "Carcass"
+    duration: "~60"
+    include_lar: false
+    include_baseline: false
+    rin_sensitivity_threshold: 6.0
+    qa_score_column: "Parameter Value[QA Score]"
+    # Flight=Mix1, GC=Mix2: ERCC mass is confounded with arm. Keep ERCC rows for
+    # ExFold calibration DE, but estimate size factors on endogenous genes only.
+    exclude_ercc_from_size_factors: true
+  # Shared-mechanism concordance (headline). Global NES rho stays supporting.
+  mechanisms:
+    fdr_q: 0.25
+    nes_abs_min: 1.5
+    fdr_q_strict: 0.05
+    cluster_jaccard_min: 0.5
+    n_permutations: 2000
+    random_seed: 0
+    top_intersection_genes: 40
+  # Exactly four NES pairs (MODULE4_REBUILD section 4). H_AGING_HUBMAP only vs H_AGING_GTEX.
+  nes_pairs:
+    - [H_DISEASE, H_AGING_GTEX, biology_best_case]
+    - [H_DISEASE, M_FLIGHT, cross_ecosystem]
+    - [H_AGING_GTEX, M_FLIGHT, cross_ecosystem]
+    - [H_AGING_HUBMAP, H_AGING_GTEX, method]
+
+# ---------------------------------------------------------------------------
+# Module 5  -  scientific communication (no notebook; PDF/MD assessment)
+# ---------------------------------------------------------------------------
+module5:
+  _scripts: []
+  _bloom: [Evaluate, Create]
+  _instructional_minutes: 20
+  materials:
+    exercise: docs/module5/exercise.md
+    answer_key: docs/module5/exercise_answer_key.md
+    knowledge_check: docs/module5/knowledge_check.md
+    knowledge_check_answers: docs/module5/knowledge_check_answers.md
+    screencast_outline: docs/module5/screencast_outline.md
+  exercise:
+    primary_finding: module4_nes_concordance
+    figure: outputs/figures/module4_nes_scatter.png
+    tables:
+      - outputs/tables/module4_nes_comparison.tsv
+      - outputs/tables/module4_sample_counts.tsv
+      - outputs/tables/module4_ortholog_loss.tsv
+    reported_spearman_nes: -0.197
+    reported_n_shared_pathways: 1185
+    reported_pair: H_DISEASE_vs_H_AGING_GTEX
+    note: "Values from module4_nes_pair_summary.tsv (biology_best_case pair); update only from that table."
+
+# ---------------------------------------------------------------------------
+# Paths (relative to the project root)
+# ---------------------------------------------------------------------------
+paths:
+  hubmap_source: data/source/HUBMAP
+  donor_1_root: data/source/HUBMAP/Donor_1
+  donor_2_root: data/source/HUBMAP/Donor_2
+  donor_3_root: data/source/HUBMAP/Donor_3
+  donor_4_root: data/source/HUBMAP/Donor_4
+  gtex_source: data/source/GTEX
+  geo_source: data/source/GEO
+  osdr_source: data/source/OSDR
+  processed_hubmap: data/processed/hubmap
+  processed_integrated: data/processed/integrated
+  outputs_tables: outputs/tables
+  outputs_figures: outputs/figures
+  outputs_reports: outputs/reports
+  provenance: provenance
+  genesets: data/genesets
+  reference: data/reference
+  companion_src: docs/companion_src

@@ -1,0 +1,205 @@
+{
+  "timestamp_utc": "2026-08-14T14:00:07.563204+00:00",
+  "inputs": [
+    {
+      "donor_label": "Donor_1",
+      "block_id": "HBM347.VDHS.379",
+      "primary_id": "HBM347.VDHS.379",
+      "primary_doi": "10.35079/HBM347.VDHS.379",
+      "processed_id": "HBM675.RVGB.258",
+      "uuid": "171bd6114652ce2a1ff0e4757b5eaef9",
+      "qc_h5ad": "data/processed/hubmap/module1_HBM347.VDHS.379_qc_preprocessed.h5ad",
+      "sha256": "53b8f70ad99b58717c4192c5228c9d74517228768644af8073ce14a9bbb1aa29"
+    },
+    {
+      "donor_label": "Donor_2",
+      "block_id": "HBM473.NKMR.872",
+      "primary_id": "HBM473.NKMR.872",
+      "primary_doi": "10.35079/HBM473.NKMR.872",
+      "processed_id": "HBM362.DZVK.533",
+      "uuid": "4c031c4aba3b656a07a5ab14a305cbba",
+      "qc_h5ad": "data/processed/hubmap/module1_HBM473.NKMR.872_qc_preprocessed.h5ad",
+      "sha256": "bf65c06786b59db845cd6b48bdbae67ebcff8110ca45f968b9176d6bae4d30c5"
+    },
+    {
+      "donor_label": "Donor_3",
+      "block_id": "HBM484.RGWP.797",
+      "primary_id": "HBM484.RGWP.797",
+      "primary_doi": "10.35079/HBM484.RGWP.797",
+      "processed_id": "HBM874.PWHS.622",
+      "uuid": "ab3942cee59a994d73f6f89f8f5eb84a",
+      "qc_h5ad": "data/processed/hubmap/module1_HBM484.RGWP.797_qc_preprocessed.h5ad",
+      "sha256": "cc530739aab8506f813126fd12f88be16572e88500e8067b0cf29ba3ccf9c60e"
+    },
+    {
+      "donor_label": "Donor_4",
+      "block_id": "HBM379.QCJT.435",
+      "primary_id": "HBM379.QCJT.435",
+      "primary_doi": "10.35079/HBM379.QCJT.435",
+      "processed_id": "HBM735.NMFW.852",
+      "uuid": "f5ce0bfcef8d17a18e0a3911fb2b2726",
+      "qc_h5ad": "data/processed/hubmap/module1_HBM379.QCJT.435_qc_preprocessed.h5ad",
+      "sha256": "c32f8a7b37326ad968e2db8bd2b58ae7b9038c1bfe4c8a1262b8f128c59f5374"
+    }
+  ],
+  "n_obs": 18884,
+  "n_vars": 42258,
+  "random_seed": 0,
+  "exclude_intron_features": true,
+  "embedding": {
+    "target_sum": 10000,
+    "n_top_genes": 2000,
+    "n_pcs": 40,
+    "n_neighbors": 20,
+    "umap_min_dist": 0.25,
+    "umap_spread": 1.2,
+    "scale_max_value": 10,
+    "n_pcs_neighbors": 40,
+    "leiden_resolution": 0.8,
+    "leiden_resolutions": [
+      0.4,
+      0.8,
+      1.2
+    ]
+  },
+  "harmony": {
+    "enabled": true,
+    "key": "donor_id",
+    "max_iter_harmony": 20,
+    "theta": null,
+    "random_state": 0
+  },
+  "diagnostics": {
+    "enabled": true,
+    "log_matrix_memory": true,
+    "knn_k": 30,
+    "max_cells": 8000,
+    "random_seed": null
+  },
+  "methods_narrative": "QC-preprocessed Module 1 objects were concatenated on versionless Ensembl IDs using anndata.concat with join='inner'. Joint HVGs (n=2000) entered PCA (40 PCs). Donor effects were corrected with Harmony (harmonypy 2.0.0) on X_pca using batch key `donor_id`, max_iter_harmony=20, and random_state=0. Neighbors (n_neighbors=20) and UMAP (min_dist=0.25, spread=1.2) were recomputed on the Harmony embedding for visualization. Cell labels prefer `azimuth_label` for biological interpretation; Leiden (resolution=0.8) is always computed for diagnostic label-comparison panels, not only as a fallback. GTEx comparison is deferred to Module 4. Software: scanpy 1.11.5, anndata 0.12.19.",
+  "methods_table": [
+    {
+      "step": "Inputs",
+      "parameters": "Module 1 QC/preprocessed h5ads (counts layer retained)",
+      "package_or_function": "anndata"
+    },
+    {
+      "step": "Gene ID harmonization",
+      "parameters": "strip Ensembl version; intersect genes",
+      "package_or_function": "pandas"
+    },
+    {
+      "step": "Concatenation",
+      "parameters": "inner gene intersect across donors (join='inner')",
+      "package_or_function": "anndata.concat"
+    },
+    {
+      "step": "HVG (joint)",
+      "parameters": "Seurat flavor n_top_genes=2000",
+      "package_or_function": "scanpy.pp.highly_variable_genes"
+    },
+    {
+      "step": "Scaling",
+      "parameters": "max_value=10",
+      "package_or_function": "scanpy.pp.scale"
+    },
+    {
+      "step": "PCA",
+      "parameters": "n_comps=40, svd_solver=arpack",
+      "package_or_function": "scanpy.tl.pca"
+    },
+    {
+      "step": "Neighbors (uncorrected)",
+      "parameters": "use_rep=X_pca, n_neighbors=20, n_pcs=40",
+      "package_or_function": "scanpy.pp.neighbors"
+    },
+    {
+      "step": "UMAP (uncorrected)",
+      "parameters": "min_dist=0.25, spread=1.2",
+      "package_or_function": "scanpy.tl.umap"
+    },
+    {
+      "step": "Batch correction",
+      "parameters": "Harmony on X_pca; key=donor_id; max_iter_harmony=20; random_state=0; theta=None",
+      "package_or_function": "harmonypy.run_harmony"
+    },
+    {
+      "step": "Neighbors (Harmony)",
+      "parameters": "use_rep=X_pca_harmony, n_neighbors=20, n_pcs=all Harmony PCs",
+      "package_or_function": "scanpy.pp.neighbors"
+    },
+    {
+      "step": "UMAP (Harmony)",
+      "parameters": "min_dist=0.25, spread=1.2",
+      "package_or_function": "scanpy.tl.umap"
+    },
+    {
+      "step": "Leiden (diagnostic)",
+      "parameters": "Always computed for label-comparison panels (resolution=0.8); Azimuth preferred for biological interpretation",
+      "package_or_function": "scanpy.tl.leiden (leidenalg)"
+    },
+    {
+      "step": "Labels for pseudobulk",
+      "parameters": "azimuth_label",
+      "package_or_function": "Azimuth join from Module 1"
+    },
+    {
+      "step": "GTEx reference",
+      "parameters": "Deferred to Module 4 (cross-ecosystem)",
+      "package_or_function": "n/a in Module 2"
+    },
+    {
+      "step": "Random seed",
+      "parameters": "0",
+      "package_or_function": "config"
+    }
+  ],
+  "environment": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.1",
+    "anndata": "0.12.19",
+    "scanpy": "1.11.5",
+    "yaml": "6.0.3",
+    "harmonypy": "2.0.0",
+    "leidenalg": "0.12.0",
+    "igraph": "1.0.0",
+    "umap": "0.5.12",
+    "sklearn": "1.9.0",
+    "gseapy": "1.3.1",
+    "mudata": "0.3.10",
+    "muon": "0.1.9",
+    "pydeseq2": "0.5.4",
+    "h5py": "3.16.0"
+  },
+  "figures": {
+    "umap_before": "outputs/figures/module2_umap_before_harmony.png",
+    "umap_after": "outputs/figures/module2_umap_after_harmony.png",
+    "umap_label_comparison": "outputs/figures/module2_umap_label_comparison.png",
+    "marker_heatmap": "outputs/figures/module2_hubmap_marker_heatmap.png"
+  },
+  "extras": {
+    "label_col": "azimuth_label",
+    "cell_class_unmapped": [],
+    "cell_class_mapping_n": {
+      "n_labels_present": 38,
+      "n_mapped": 37,
+      "n_unmapped": 0
+    },
+    "_compute_seconds": 29.951,
+    "peak_rss_mb": 4749.48,
+    "peak_rss_mb_start": 287.34,
+    "peak_rss_note": "process peak RSS so far (ru_maxrss); monotone across a loop, not per-step",
+    "feature_space": {
+      "composition_weighted_features": "42258 (18828 exonic, 23430 intron)",
+      "n_features_total": 42258,
+      "n_features_exonic": 18828,
+      "n_features_intron": 23430,
+      "note": "Module 2 pseudobulk is on the full integrated gene space; Module 2 DE may drop *-I intron features when exclude_intron_features=true."
+    }
+  },
+  "_compute_seconds": 29.951,
+  "peak_rss_mb": 4749.48,
+  "note": "Pseudobulk vectors are on the linear (expm1) scale. max_across_labels is a contrast to composition-weighted, not a bulk average. GTEx is not used in Module 2."
+}

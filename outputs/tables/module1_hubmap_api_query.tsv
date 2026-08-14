@@ -1,0 +1,5 @@
+query_date_utc	api_version	source	donor_label	donor_id	block_id	age	sex	race	organ	selection_reason
+2026-08-10T00:33:50.809352+00:00	deferred/local-teaching-set	local curated teaching cohort (not Search API live result)	Donor_1	HBM943.SCQQ.877	HBM347.VDHS.379	37.0	Male	Black or African American	Lung (Right)	mid-adult male; Module 1 QC scaffold block
+2026-08-10T00:33:50.809352+00:00	deferred/local-teaching-set	local curated teaching cohort (not Search API live result)	Donor_2	HBM994.NXZC.854	HBM473.NKMR.872	25.0	Female	White	Lung	younger adult female; clean alveolar composition
+2026-08-10T00:33:50.809352+00:00	deferred/local-teaching-set	local curated teaching cohort (not Search API live result)	Donor_3	HBM643.KCCK.866	HBM484.RGWP.797	56.8	Female	Hispanic or Latino	Lung	older adult female; required for Module 3 multiome
+2026-08-10T00:33:50.809352+00:00	deferred/local-teaching-set	local curated teaching cohort (not Search API live result)	Donor_4	HBM428.GRPJ.489	HBM379.QCJT.435	52.96	Male	White	Lung	older adult male; clean alveolar older arm

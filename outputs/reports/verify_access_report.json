@@ -1,0 +1,174 @@
+{
+  "n_assets": 15,
+  "n_failures": 0,
+  "results": [
+    {
+      "name": "hubmap_raw_expr:HBM347.VDHS.379",
+      "url": "https://assets.hubmapconsortium.org/171bd6114652ce2a1ff0e4757b5eaef9/raw_expr.h5ad",
+      "status": 206,
+      "expected_bytes": 68570960,
+      "observed_bytes": 68570960,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "hubmap_raw_expr:HBM473.NKMR.872",
+      "url": "https://assets.hubmapconsortium.org/4c031c4aba3b656a07a5ab14a305cbba/raw_expr.h5ad",
+      "status": 206,
+      "expected_bytes": 104554256,
+      "observed_bytes": 104554256,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "hubmap_raw_expr:HBM484.RGWP.797",
+      "url": "https://assets.hubmapconsortium.org/ab3942cee59a994d73f6f89f8f5eb84a/raw_expr.h5ad",
+      "status": 206,
+      "expected_bytes": 150924592,
+      "observed_bytes": 150924592,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "hubmap_raw_expr:HBM379.QCJT.435",
+      "url": "https://assets.hubmapconsortium.org/f5ce0bfcef8d17a18e0a3911fb2b2726/raw_expr.h5ad",
+      "status": 206,
+      "expected_bytes": 70562176,
+      "observed_bytes": 70562176,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "module3_mofa",
+      "url": "https://assets.hubmapconsortium.org/7e0dddcafb462159ac1f9fc3ff875b7f/multiome_mofa.hdf5",
+      "status": 206,
+      "expected_bytes": 84530854,
+      "observed_bytes": 84530854,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "gtex_gene_tpm_v10_lung",
+      "url": "https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/tpms-by-tissue/gene_tpm_v10_lung.gct.gz",
+      "status": 206,
+      "expected_bytes": 77602696,
+      "observed_bytes": 77602696,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "gtex_gene_reads_v10_lung",
+      "url": "https://storage.googleapis.com/adult-gtex/bulk-gex/v10/rna-seq/counts-by-tissue/gene_reads_v10_lung.gct.gz",
+      "status": 206,
+      "expected_bytes": 32489671,
+      "observed_bytes": 32489671,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "geo_gse150910_gene_counts",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE150nnn/GSE150910/suppl/GSE150910_gene-level_count_file.csv.gz",
+      "status": 206,
+      "expected_bytes": 8117424,
+      "observed_bytes": 8117424,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "osdr_osd248_portal",
+      "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-248",
+      "status": 206,
+      "expected_bytes": null,
+      "observed_bytes": 1010,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "hubmap_search_api",
+      "url": "https://search.api.hubmapconsortium.org/v3/indices",
+      "status": 200,
+      "expected_bytes": null,
+      "observed_bytes": 131,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "gtex_api_v2",
+      "url": "https://gtexportal.org/api/v2/dataset/tissueSiteDetail",
+      "status": 200,
+      "expected_bytes": null,
+      "observed_bytes": 44921,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "smartapi_hubmap_query",
+      "url": "https://smart-api.info/api/query?q=hubmap",
+      "status": 200,
+      "expected_bytes": null,
+      "observed_bytes": 349091,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true
+    },
+    {
+      "name": "local_gtex_gene_reads",
+      "url": "data/source/GTEX/gene_reads_v10_lung.gct.gz",
+      "status": 200,
+      "expected_bytes": 32489671,
+      "observed_bytes": 32489671,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true,
+      "check": "local_presence"
+    },
+    {
+      "name": "local_geo_gse150910_counts",
+      "url": "data/source/GEO/GSE150910/GSE150910_gene-level_count_file.csv.gz",
+      "status": 200,
+      "expected_bytes": 8117424,
+      "observed_bytes": 8117424,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true,
+      "check": "local_presence"
+    },
+    {
+      "name": "local_osd248_unnormalized_counts",
+      "url": "data/source/OSDR/OSD-248/GLDS-248_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv",
+      "status": 200,
+      "expected_bytes": 10895936,
+      "observed_bytes": 10895936,
+      "ok_status": true,
+      "ok_size": true,
+      "ok": true,
+      "required": true,
+      "check": "local_presence"
+    }
+  ]
+}

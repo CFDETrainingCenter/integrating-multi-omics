@@ -1,0 +1,31 @@
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+outputs/.mplconfig/
+outputs/.numba_cache/
+
+# Learner-sourced primary data and regenerated matrices.
+# Un-ignore directories first so nested .gitkeep files stay tracked.
+data/source/HUBMAP/**
+data/source/GTEX/**
+data/source/GEO/**
+data/source/OSDR/**
+!data/source/**/
+!data/source/**/.gitkeep
+data/processed/**
+!data/processed/**/
+!data/processed/**/.gitkeep
+!data/processed/README.md
+
+# Tables the pipeline regenerates on a run. The committed inputs are listed
+# explicitly below and must stay tracked.
+outputs/tables/*
+!outputs/tables/module1_hubmap_api_query.tsv
+!outputs/tables/module1_learner_download_manifest.tsv
+!outputs/tables/module1_smartapi_registry.tsv
+!outputs/tables/module2_azimuth_labels.tsv
+!outputs/tables/module3_label_cache_HBM828.GPVG.252.tsv
+!outputs/tables/module4_nes_sensitivity.tsv
+!outputs/tables/module4_osd248_genelab_isst_de_subset.tsv

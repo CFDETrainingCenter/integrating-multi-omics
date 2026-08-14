@@ -1,0 +1,287 @@
+{
+  "timestamp_utc": "2026-08-14T14:00:55.290428+00:00",
+  "module3": {
+    "_scripts": [
+      "nb05_multimodal"
+    ],
+    "_bloom": [
+      "Analyze"
+    ],
+    "_instructional_minutes": 35,
+    "donor_label": "Donor_2",
+    "donor_id": "HBM994.NXZC.854",
+    "dataset_id": "HBM828.GPVG.252",
+    "uuid": "772d0ce4657bb306359c0230c57ee1e9",
+    "assay": "SNARE-seq2 [Salmon + ArchR + Muon]",
+    "portal_url": "https://portal.hubmapconsortium.org/browse/dataset/HBM828.GPVG.252",
+    "multiome_dir": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252",
+    "matched_snrna": {
+      "primary_id": "HBM473.NKMR.872",
+      "processed_id": "HBM362.DZVK.533",
+      "block_id": "HBM337.KBLS.364",
+      "section_id": "HBM537.RWMB.765",
+      "suspension_id": "HBM863.FXRR.429",
+      "note": "same block and section as the multiome; different nuclei, so no per-nucleus join"
+    },
+    "params": {
+      "load_h5mu": false,
+      "interpretation_only": true,
+      "secondary_h5mu_size_note": "~14.7 GiB; optional unless load_h5mu=true; learners do not download it"
+    },
+    "thresholds": {
+      "min_nuclei_correlation": 50,
+      "noise_delta_r": 0.01,
+      "min_cluster_size": 20,
+      "min_label_prediction_score": 0.0
+    },
+    "files": {
+      "secondary_h5mu": "secondary_analysis.h5mu",
+      "mudata_raw_h5mu": "mudata_raw.h5mu",
+      "mofa_hdf5": "multiome_mofa.hdf5",
+      "pdf_combined": "leiden_cluster_combined.pdf",
+      "pdf_rna": "leiden_cluster_rna.pdf",
+      "pdf_atac": "leiden_cluster_atac.pdf",
+      "label_cache": "outputs/tables/module3_label_cache_HBM828.GPVG.252.tsv"
+    },
+    "modalities": {
+      "rna": "rna",
+      "atac_gene": "atac_cbg",
+      "atac_bin": "atac_cbb",
+      "use_atac_bin": false
+    },
+    "analysis": {
+      "random_seed": 0,
+      "max_nuclei_preview": 5000,
+      "bridge_metric": "feature_std_on_mofa_inputs",
+      "rna_layer": "spliced_unspliced_sum",
+      "rna_layer_fallback": "spliced",
+      "mofa_variance_max_factor": 18,
+      "focus_genes": [
+        "SFTPC",
+        "SFTPA2",
+        "AGER",
+        "SCGB1A1",
+        "FOXJ1",
+        "PECAM1",
+        "CLDN5",
+        "LUM",
+        "PTPRC",
+        "NKG7",
+        "ACTA2",
+        "PDGFRB"
+      ],
+      "focus_genes_not_in_both_modalities": [
+        "EPCAM"
+      ],
+      "focus_gene_cell_types": {
+        "SFTPC": [
+          "AT2"
+        ],
+        "SFTPA2": [
+          "AT2"
+        ],
+        "AGER": [
+          "AT1"
+        ],
+        "SCGB1A1": [
+          "Transitional Club-AT2"
+        ],
+        "FOXJ1": [
+          "Multiciliated (non-nasal)"
+        ],
+        "PECAM1": [
+          "EC general capillary",
+          "EC aerocyte capillary",
+          "EC arterial",
+          "EC venous pulmonary",
+          "EC venous systemic"
+        ],
+        "CLDN5": [
+          "EC general capillary",
+          "EC aerocyte capillary",
+          "EC arterial",
+          "EC venous pulmonary",
+          "EC venous systemic"
+        ],
+        "LUM": [
+          "Alveolar fibroblasts",
+          "Adventitial fibroblasts"
+        ],
+        "PTPRC": [
+          "CD8 T cells",
+          "CD4 T cells",
+          "B cells",
+          "Classical monocytes",
+          "Non-classical monocytes",
+          "Alveolar macrophages"
+        ],
+        "NKG7": [
+          "CD8 T cells"
+        ],
+        "ACTA2": [
+          "Myofibroblasts",
+          "Smooth muscle",
+          "SM activated stress response"
+        ],
+        "PDGFRB": [
+          "Pericytes"
+        ]
+      }
+    },
+    "interpretation": true
+  },
+  "n_shared_genes": 1962,
+  "pearson_log1p": -0.045821951167050366,
+  "spearman_log1p": -0.0401923647461158,
+  "bridge_metric": "feature_std_on_mofa_inputs",
+  "r2_recompute": {
+    "ok": true,
+    "view": "rna",
+    "rna_r2_recomputed": 0.013128170817511609,
+    "rna_r2_stored": 1.3128374404452026,
+    "ss_res": 74844399.34997773,
+    "ss_tot": 75840040.35455936,
+    "n_nan_in_Y": 0,
+    "matches_stored": true,
+    "matches_direct": false,
+    "matches_percent": true,
+    "scale_branch": "percent",
+    "label": "Recomputation matches stored/100 (percent scale); Gate 2 confirms convention before swapping published %.",
+    "W_shape": [
+      30,
+      8991
+    ],
+    "Z_shape": [
+      21978,
+      30
+    ],
+    "Y_shape": [
+      21978,
+      8991
+    ]
+  },
+  "nondominant_r2_summary": {
+    "max_nondominant_r2": 0.0004153569197029583,
+    "max_nondominant_percent": 0.0004153569197029583,
+    "max_nondominant_fraction": 4.153569197029583e-06,
+    "r2_units": "percent",
+    "scale_branch": "percent",
+    "n_factors": 30,
+    "dead_factors": [
+      "Factor19",
+      "Factor20",
+      "Factor21",
+      "Factor22",
+      "Factor23",
+      "Factor24",
+      "Factor25",
+      "Factor26",
+      "Factor27",
+      "Factor28",
+      "Factor29",
+      "Factor30"
+    ],
+    "active_factor_cutoff_note": "Factors with max view R^2 < 1e-3 in stored units are numerically dead (cutoff interpreted on the percent scale)"
+  },
+  "methods_narrative": "Module 3 examined true multiome context for HuBMAP donor HBM994.NXZC.854 using SNARE-seq2 Salmon+ArchR+Muon dataset HBM828.GPVG.252. The default teaching path interprets the fitted MOFA model (`multiome_mofa.hdf5`) without requiring the full MuData download. RNA and ATAC modalities occupy the same barcode space when MuData is loaded. Joint structure is summarized with MOFA factors (rna + atac_cbg views). A genome-wide gene bridge uses feature_std_on_mofa_inputs on MOFA inputs (joined by HUGO symbol). Claims about shared latent structure must match the variance table (re-measured in Phase 3). Software: scanpy 1.11.5, anndata 0.12.19.",
+  "methods_table": [
+    {
+      "step": "Donor",
+      "parameters": "HBM994.NXZC.854 (Donor_2)",
+      "package_or_function": "true multiome teaching donor"
+    },
+    {
+      "step": "Dataset",
+      "parameters": "HBM828.GPVG.252",
+      "package_or_function": "SNARE-seq2 [Salmon + ArchR + Muon]"
+    },
+    {
+      "step": "Portal URL",
+      "parameters": "https://portal.hubmapconsortium.org/browse/dataset/HBM828.GPVG.252",
+      "package_or_function": "HuBMAP native dataset page"
+    },
+    {
+      "step": "Default path",
+      "parameters": "interpretation_only from multiome_mofa.hdf5",
+      "package_or_function": "Phase 0/3 download decision"
+    },
+    {
+      "step": "MuData input",
+      "parameters": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252/secondary_analysis.h5mu",
+      "package_or_function": "optional unless load_h5mu=true"
+    },
+    {
+      "step": "MOFA input",
+      "parameters": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252/multiome_mofa.hdf5",
+      "package_or_function": "joint factors + rna/atac_cbg feature matrices"
+    },
+    {
+      "step": "Gene bridge",
+      "parameters": "feature_std_on_mofa_inputs: log1p(RNA feature SD) vs log1p(ATAC feature SD) on MOFA inputs (HUGO join)",
+      "package_or_function": "MOFA inputs are centered; SD captures shared variability (not mean expression)"
+    },
+    {
+      "step": "Focus markers",
+      "parameters": "['SFTPC', 'SFTPA2', 'AGER', 'SCGB1A1', 'FOXJ1', 'PECAM1', 'CLDN5', 'LUM', 'PTPRC', 'NKG7', 'ACTA2', 'PDGFRB']; rna_layer=spliced_unspliced_sum when MuData loaded",
+      "package_or_function": "global + within-cell-type Pearson; flag low-n and rna_mean==0"
+    },
+    {
+      "step": "MOFA honesty checks",
+      "parameters": "recompute R^2 from Z/W/Y; max non-dominant R^2; truncate dead trailing factors",
+      "package_or_function": "scripts.nb05_multimodal.load.recompute_mofa_r2_total"
+    },
+    {
+      "step": "Markers not in both spaces",
+      "parameters": "['EPCAM']",
+      "package_or_function": "documented omissions"
+    },
+    {
+      "step": "Random seed",
+      "parameters": "0",
+      "package_or_function": "config"
+    }
+  ],
+  "environment": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.11.1",
+    "anndata": "0.12.19",
+    "scanpy": "1.11.5",
+    "yaml": "6.0.3",
+    "harmonypy": "2.0.0",
+    "leidenalg": "0.12.0",
+    "igraph": "1.0.0",
+    "umap": "0.5.12",
+    "sklearn": "1.9.0",
+    "gseapy": "1.3.1",
+    "mudata": "0.3.10",
+    "muon": "0.1.9",
+    "pydeseq2": "0.5.4",
+    "h5py": "3.16.0"
+  },
+  "figures": {
+    "mofa_variance": "outputs/figures/module3_mofa_variance.png",
+    "mofa_latent": "outputs/figures/module3_mofa_latent.png",
+    "qc_association": "outputs/figures/module3_qc_association.png",
+    "factor_label_heatmap": "outputs/figures/module3_factor_label_heatmap.png",
+    "wnn_umap": "outputs/figures/module3_wnn_umap.png",
+    "cluster_concordance": "outputs/figures/module3_cluster_concordance.png",
+    "rna_atac_scatter": "outputs/figures/module3_rna_atac_scatter.png",
+    "focus_correlations": "outputs/figures/module3_focus_gene_correlations.png"
+  },
+  "extras": {
+    "multiome_dir": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252",
+    "mofa_hdf5": "data/source/HUBMAP/Donor_2/SNAREseq/HBM828.GPVG.252/multiome_mofa.hdf5",
+    "n_nuclei": 21978,
+    "n_mofa_factors": 30,
+    "portal_url": "https://portal.hubmapconsortium.org/browse/dataset/HBM828.GPVG.252",
+    "load_h5mu": false,
+    "_compute_seconds": 7.997,
+    "peak_rss_mb": 7029.89,
+    "peak_rss_mb_start": 181.28,
+    "peak_rss_note": "process peak RSS so far (ru_maxrss); monotone across a loop, not per-step"
+  },
+  "_compute_seconds": 7.997,
+  "peak_rss_mb": 7029.89
+}
