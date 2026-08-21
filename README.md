@@ -1,9 +1,6 @@
 # CFDE Lung Transcriptomics Course
 
-A five-module course in lung transcriptomics built on Common Fund Data Ecosystem resources. You
-discover datasets through CFDE surfaces, download them from the DCC portals, and carry one analysis
-from raw nuclei through quality control, cross-donor integration, differential expression and
-pathway enrichment, paired multiome interpretation, and a cross-ecosystem contrast comparison.
+This is a five-module course in lung transcriptomics built on Common Fund Data Ecosystem (CFDE) resources. You will discover datasets through CFDE surfaces, download them from DCC portals, and carry one analysis from raw nuclei through quality control, cross-donor integration, differential expression and pathway enrichment, paired multiome interpretation, and a cross-ecosystem contrast comparison.
 
 Primary omics files are **not** included and are not redistributed. The folders they belong in are
 already named and empty; you download into them. Module 0 sets up the environment and Module 1
