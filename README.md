@@ -1,4 +1,4 @@
-# CFDE lung transcriptomics training
+# CFDE Lung Transcriptomics Course
 
 A five-module course in lung transcriptomics built on Common Fund Data Ecosystem resources. You
 discover datasets through CFDE surfaces, download them from the DCC portals, and carry one analysis
