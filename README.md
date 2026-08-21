@@ -22,7 +22,7 @@ under `data/genesets/` remain under their upstream terms; see
 
 | Included | Not included |
 |---|---|
-| Six module documents plus the instructor answer keys, under `docs/` | HuBMAP / GTEx / GEO / OSDR primary files |
+| Six module documents, under `pdfs/` | HuBMAP / GTEx / GEO / OSDR primary files |
 | Notebooks 01 to 04, outputs **cleared** | Alternate HuBMAP blocks and SNARE products other than Donor_2 `HBM828.GPVG.252` |
 | Analysis package under `scripts/` and `config/paths.yaml` | Regenerated `data/processed/*.h5ad` |
 | Empty named folders for every teaching HuBMAP ID | Full optional MuData (~14.7 GiB) |
@@ -37,17 +37,14 @@ discovery caches, and the download manifest. Everything else appears when you ru
 
 | Module | Document | Time | Notebook |
 |---|---|---|---|
-| 0 | `docs/module0.docx` | 20 min reading | none, environment setup and code orientation |
-| 1 | `docs/module1.docx` | 45 min | `notebooks/01_discovery_and_qc.ipynb` |
-| 2 | `docs/module2.docx` | 45 min | `notebooks/02_integration_de_pathways.ipynb` |
-| 3 | `docs/module3.docx` | 30 min | `notebooks/03_multiome.ipynb` |
-| 4 | `docs/module4.docx` | 30 min | `notebooks/04_cross_ecosystem.ipynb` |
-| 5 | `docs/module5.docx` | 30 min | none, communication and assessment |
+| 0 | `pdfs/module0.pdf` | 20 min reading | none, environment setup and code orientation |
+| 1 | `pdfs/module1.pdf` | 45 min | `notebooks/01_discovery_and_qc.ipynb` |
+| 2 | `pdfs/module2.pdf` | 45 min | `notebooks/02_integration_de_pathways.ipynb` |
+| 3 | `pdfs/module3.pdf` | 30 min | `notebooks/03_multiome.ipynb` |
+| 4 | `pdfs/module4.pdf` | 30 min | `notebooks/04_cross_ecosystem.ipynb` |
+| 5 | `pdfs//module5.pdf` | 30 min | none, communication and assessment |
 
 Three hours of instruction across Modules 1 to 5, excluding Module 0.
-
-`docs/answer_keys.docx` is an instructor document covering the Module 5 knowledge check and the
-capstone rubric. It is not learner material.
 
 ## What you need
 
