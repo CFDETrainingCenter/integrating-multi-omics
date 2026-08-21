@@ -127,8 +127,3 @@ After the download is complete:
 ```bash
 python scripts/run_modules_smoke.py --module all
 ```
-
-## Folders you populate
-
-`pdfs/` and `screencasts/` are placeholders for the rendered PDF documents and the module
-screencasts.
